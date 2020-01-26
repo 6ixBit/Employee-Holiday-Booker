@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Admin_desktop_app")]
+[assembly: AssemblyTitle("Admin_desktopp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Admin_desktop_app")]
+[assembly: AssemblyProduct("Admin_desktopp")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e7f888d9-d692-40d4-ae9b-241da230d7d0")]
+[assembly: Guid("d82a2027-fa89-415b-83c8-22c583b96158")]
 
 // Version information for an assembly consists of the following four values:
 //

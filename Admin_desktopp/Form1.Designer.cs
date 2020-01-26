@@ -1,4 +1,4 @@
-﻿namespace Admin_desktop_app
+﻿namespace Admin_desktopp
 {
     partial class Form1
     {

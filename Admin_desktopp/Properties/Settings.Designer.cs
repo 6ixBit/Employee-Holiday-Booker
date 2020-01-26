@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Admin_desktop_app.Properties
+namespace Admin_desktopp.Properties
 {
 
 

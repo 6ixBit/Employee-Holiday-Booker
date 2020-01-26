@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E7F888D9-D692-40D4-AE9B-241DA230D7D0}</ProjectGuid>
+    <ProjectGuid>{D82A2027-FA89-415B-83C8-22C583B96158}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Admin_desktop_app</RootNamespace>
-    <AssemblyName>Admin_desktop_app</AssemblyName>
+    <RootNamespace>Admin_desktopp</RootNamespace>
+    <AssemblyName>Admin_desktopp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
