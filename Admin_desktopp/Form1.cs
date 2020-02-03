@@ -22,13 +22,17 @@ namespace Admin_desktopp
         private void login_button_Click(object sender, EventArgs e)
         {
             EmployeeModel em = new EmployeeModel();
-            
+            em.delete_employee("Aaron@gmail.com");
+
             try
-            {
-                em.get_employee("admin@admin.com");
+            {       // Query database with form data    
+                if (em.login_employee(username_textBox.Text, password_textBox.Text) == false)
+                {
+                    failed_login_Label.Visible = true;
+                }
+
             } catch (Exception err)
-            {
-                failed_login_Label.Visible = true;
+            { // :TODO remove when out of dev environment
                 Console.WriteLine("Failed to login: " + err);
             }   
         }
@@ -36,38 +40,6 @@ namespace Admin_desktopp
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }
-    }
-
-    public class Database
-    {
-        public bool login_user(string username, string password)
-        {
-            OleDbConnection connection = new OleDbConnection();
-            connection.ConnectionString = @"Provider=Microsoft.JET.OLEDB.4.0;Data Source=C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\employee_db.mdb"; //Needs to be changed to relative path.
-
-            string login_query = $"SELECT email, password FROM Employee WHERE email = '{username}' AND password = '{password}';";
-            OleDbCommand myCommand = new OleDbCommand(login_query, connection); 
-
-            try
-            { // Attempt to connect to database
-                connection.Open();
-
-                if (myCommand.ExecuteNonQuery() == 0)
-                {
-                    // Error occured
-                    return false;
-                }
-
-                // TODO: Add check to ensure there was a match in the database. - FIX NEEDED
-                Console.WriteLine("Query was executed successfully");
-                return true;
-
-            } catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return false;
-            } finally { connection.Close(); }
         }
     }
 }
