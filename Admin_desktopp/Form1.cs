@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using Admin_desktopp.Models;
 
 namespace Admin_desktopp
 {
@@ -20,22 +21,21 @@ namespace Admin_desktopp
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            Database my_db = new Database(); //Make instance of database class
-
+            EmployeeModel em = new EmployeeModel();
+            
             try
             {
-                if (my_db.login_user(username_textBox.Text, password_textBox.Text) == true)
-                {
-                    //Hide login form on successful Authentication
-                    login_Panel.Hide();
-                }
-
+                em.get_employee("admin@admin.com");
             } catch (Exception err)
             {
                 failed_login_Label.Visible = true;
                 Console.WriteLine("Failed to login: " + err);
-            }
-            
+            }   
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -113,6 +113,7 @@
             this.Controls.Add(this.login_Panel);
             this.Name = "Form1";
             this.Text = "Admin desktop for holiday bookings";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.login_Panel.ResumeLayout(false);
             this.login_Panel.PerformLayout();
             this.ResumeLayout(false);
