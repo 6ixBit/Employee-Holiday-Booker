@@ -13,10 +13,10 @@ namespace Admin_desktopp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Holiday_bookingsEntities : DbContext
+    public partial class HolidayBookingsEntities : DbContext
     {
-        public Holiday_bookingsEntities()
-            : base("name=Holiday_bookingsEntities")
+        public HolidayBookingsEntities()
+            : base("name=HolidayBookingsEntities")
         {
         }
     

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\HolidayModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\Holiday_bookingsModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

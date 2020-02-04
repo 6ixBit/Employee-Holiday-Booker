@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs">
-      <DependentUpon>HolidayModel.tt</DependentUpon>
+      <DependentUpon>Holiday_bookingsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -65,22 +65,23 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Holiday.cs">
-      <DependentUpon>HolidayModel.tt</DependentUpon>
+      <DependentUpon>Holiday_bookingsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HolidayModel.Context.cs">
+    <Compile Include="Holidays.cs" />
+    <Compile Include="Holiday_bookingsModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HolidayModel.Context.tt</DependentUpon>
+      <DependentUpon>Holiday_bookingsModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="HolidayModel.cs">
+    <Compile Include="Holiday_bookingsModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HolidayModel.tt</DependentUpon>
+      <DependentUpon>Holiday_bookingsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HolidayModel.Designer.cs">
+    <Compile Include="Holiday_bookingsModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HolidayModel.edmx</DependentUpon>
+      <DependentUpon>Holiday_bookingsModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\HolidayModel.cs" />
@@ -98,12 +99,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="HolidayModel.edmx">
+    <EntityDeploy Include="Holiday_bookingsModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HolidayModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Holiday_bookingsModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="HolidayModel.edmx.diagram">
-      <DependentUpon>HolidayModel.edmx</DependentUpon>
+    <None Include="Holiday_bookingsModel.edmx.diagram">
+      <DependentUpon>Holiday_bookingsModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -120,20 +121,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HolidayModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HolidayModel.Context.cs</LastGenOutput>
-      <DependentUpon>HolidayModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="HolidayModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HolidayModel.edmx</DependentUpon>
-      <LastGenOutput>HolidayModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Holiday_bookingsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Holiday_bookingsModel.edmx</DependentUpon>
+      <LastGenOutput>Holiday_bookingsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Holiday_bookingsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Holiday_bookingsModel.edmx</DependentUpon>
+      <LastGenOutput>Holiday_bookingsModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

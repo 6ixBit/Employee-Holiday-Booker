@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HolidayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Holiday_bookingsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Employee_ID" />
@@ -26,10 +26,10 @@
           <Property Name="Employee_ID" Type="int" />
           <Property Name="holiday_start" Type="date" />
           <Property Name="holiday_end" Type="date" />
-          <Property Name="holiday_approved" Type="bit" />
+          <Property Name="holiday_status" Type="varchar" MaxLength="50" />
           <Property Name="constraints_broken" Type="bit" />
         </EntityType>
-        <EntityContainer Name="HolidayModelStoreContainer">
+        <EntityContainer Name="Holiday_bookingsModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -37,7 +37,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HolidayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Holiday_bookingsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Employee_ID" />
@@ -59,10 +59,10 @@
           <Property Name="Employee_ID" Type="Int32" />
           <Property Name="holiday_start" Type="DateTime" Precision="0" />
           <Property Name="holiday_end" Type="DateTime" Precision="0" />
-          <Property Name="holiday_approved" Type="Boolean" />
+          <Property Name="holiday_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="constraints_broken" Type="Boolean" />
         </EntityType>
-        <EntityContainer Name="Holiday_bookingsEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HolidayBookingsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Holidays" EntityType="Self.Holiday" />
         </EntityContainer>
@@ -71,9 +71,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HolidayModelStoreContainer" CdmEntityContainer="Holiday_bookingsEntities">
+        <EntityContainerMapping StorageEntityContainer="Holiday_bookingsModelStoreContainer" CdmEntityContainer="HolidayBookingsEntities">
           <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="HolidayModel.Employee">
+            <EntityTypeMapping TypeName="Holiday_bookingsModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
                 <ScalarProperty Name="email" ColumnName="email" />
@@ -87,13 +87,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Holidays">
-            <EntityTypeMapping TypeName="HolidayModel.Holiday">
+            <EntityTypeMapping TypeName="Holiday_bookingsModel.Holiday">
               <MappingFragment StoreEntitySet="Holiday">
                 <ScalarProperty Name="Holiday_ID" ColumnName="Holiday_ID" />
                 <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
                 <ScalarProperty Name="holiday_start" ColumnName="holiday_start" />
                 <ScalarProperty Name="holiday_end" ColumnName="holiday_end" />
-                <ScalarProperty Name="holiday_approved" ColumnName="holiday_approved" />
+                <ScalarProperty Name="holiday_status" ColumnName="holiday_status" />
                 <ScalarProperty Name="constraints_broken" ColumnName="constraints_broken" />
               </MappingFragment>
             </EntityTypeMapping>
