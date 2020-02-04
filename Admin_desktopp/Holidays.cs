@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Admin_desktopp
 {
-    class Holidays
+    public class Holidays
     {
         private int employee_id;
         public int holiday_id;

@@ -25,9 +25,8 @@ namespace Admin_desktopp
             //em.get_system_role("admin@admin.com");
 
             HolidayModel hm = new HolidayModel();
-            hm.get_all_holiday_requests();
-
-
+            //hm.get_all_holiday_requests();
+            hm.get_holiday(2);
 
             try
             {       // Query database with form data    

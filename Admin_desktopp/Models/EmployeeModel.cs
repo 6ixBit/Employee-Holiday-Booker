@@ -98,7 +98,6 @@ namespace Admin_desktopp.Models
             employee.password = new_password;
         }
 
-
         /// @desc Update the name of an employee
         public void edit_employee_name(String email, String new_name)
         {
