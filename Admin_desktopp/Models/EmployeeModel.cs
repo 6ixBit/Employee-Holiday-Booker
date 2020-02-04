@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Admin_desktopp.Models
 {
-    public partial class EmployeeModel
+    public class EmployeeModel
     {
         Holiday_bookingsEntities db = new Holiday_bookingsEntities();
 
         // @desc Adds new employee to database
-        public void add_employee(String name, String email, String password, String employee_role, String department, String system_role)
+        public void add_employee(String name, String email, String password, String employee_role, String department, String system_role="User")
         {
             // Bind parameters passed to Employee object
             Employee new_user = new Employee
@@ -58,7 +58,7 @@ namespace Admin_desktopp.Models
             db.SaveChanges();
         }
 
-        // @desc Assigns employee to a specific role
+        // @desc Assigns employee to a specific department
         public void assign_EmployeeDepartment(String employee_email, String department)
         {
             Employee employee = db.Employees.FirstOrDefault(e => e.email == employee_email);
@@ -78,13 +78,44 @@ namespace Admin_desktopp.Models
         }
 
         // @desc Returns the system role (admin or user) of a particular user
-        public void get_system_role(String email)
+        public String get_system_role(String email)
         {
+            Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
+            return employee.system_role;
+        }
 
+        // @desc Update the system role of an employee
+        public void edit_system_role(String email, String new_system_role)
+        {
+            Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
+            employee.system_role = new_system_role;
+        }
+
+        // @desc Update the password of an employee
+        public void edit_employee_password(String email, String new_password)
+        {
+            Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
+            employee.password = new_password;
         }
 
 
+        /// @desc Update the name of an employee
+        public void edit_employee_name(String email, String new_name)
+        {
+            Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
+            employee.name_ = new_name;
+        }
 
+        // @desc Update the email of an employee
+        public void edit_employee_email(String email, String new_email)
+        {
+            Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
+            employee.email = new_email;
+        }
 
+        public void get_all_employees()
+        {
+
+        }
     }
 }

@@ -22,7 +22,12 @@ namespace Admin_desktopp
         private void login_button_Click(object sender, EventArgs e)
         {
             EmployeeModel em = new EmployeeModel();
-            em.delete_employee("Aaron@gmail.com");
+            //em.get_system_role("admin@admin.com");
+
+            HolidayModel hm = new HolidayModel();
+            hm.get_all_holiday_requests();
+
+
 
             try
             {       // Query database with form data    
@@ -32,7 +37,7 @@ namespace Admin_desktopp
                 }
 
             } catch (Exception err)
-            { // :TODO remove when out of dev environment
+            { 
                 Console.WriteLine("Failed to login: " + err);
             }   
         }

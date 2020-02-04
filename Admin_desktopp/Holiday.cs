@@ -18,7 +18,7 @@ namespace Admin_desktopp
         public Nullable<int> Employee_ID { get; set; }
         public Nullable<System.DateTime> holiday_start { get; set; }
         public Nullable<System.DateTime> holiday_end { get; set; }
-        public Nullable<bool> holiday_approved { get; set; }
+        public string holiday_status { get; set; }
         public Nullable<bool> constraints_broken { get; set; }
     }
 }
