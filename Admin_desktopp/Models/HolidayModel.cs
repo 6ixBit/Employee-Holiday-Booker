@@ -80,25 +80,6 @@ namespace Admin_desktopp.Models
             holiday.holiday_status = "Rejected";
             db.SaveChanges();
         }
-  
-        // @desc Returns employees that are not available for a particular date
-        public List<int> get_employees_not_available_for_specific_date(DateTime date)
-        { // FIX NEEDED, PORT TO EMPLOYEE TABLE
-            var query = (from hol in db.Holidays
-                         where hol.holiday_start != date
-                         select hol);
-
-            List<int> employees_not_on_holiday = new List<int>();
-
-            foreach (var employee in query)
-            {
-                employees_not_on_holiday.Add((int)employee.Employee_ID);
-            }
-            Console.WriteLine(employees_not_on_holiday[0]);
-            Console.WriteLine(employees_not_on_holiday[1]);
-            Console.WriteLine(employees_not_on_holiday[2]);
-            return employees_not_on_holiday;
-        }
 
     }
 }

@@ -123,7 +123,7 @@ namespace Admin_desktopp.Models
                          join hm in db.Holidays 
                          on emp.Employee_ID equals hm.Employee_ID
                          where hm.holiday_start == date
-                         select emp); 
+                         select emp).Distinct(); 
 
             List<Employees> employees_on_holiday = new List<Employees>();
 
@@ -145,6 +145,42 @@ namespace Admin_desktopp.Models
             }
             Console.WriteLine(employees_on_holiday[0]);
             return employees_on_holiday;
+        }
+
+        // @desc Returns employees that are not available for a particular date
+        public List<Employees> get_employees_not_available_for_specific_date(DateTime date)
+        { // FIX NEEDED, OUTPUT NEED TO BE VERIFIED
+            var query = (from emp in db.Employees
+                         join hm in db.Holidays
+                         on emp.Employee_ID equals hm.Employee_ID
+                         where hm.holiday_start != date
+                         select emp).Distinct();
+
+            List<Employees> employees_not_on_holiday = new List<Employees>();
+
+            foreach (var employee in query)
+            {
+                // New Instance from Holidays class for each result
+                Employees user_employee = new Employees();
+
+                user_employee.Name_ = employee.name_;
+                user_employee.Email = employee.email;
+                user_employee.Password = employee.password;
+                user_employee.System_role = employee.system_role;
+                user_employee.Join_date = (DateTime)employee.join_date;
+                user_employee.Department = employee.department;
+                user_employee.Employee_role = employee.employee_role;
+
+                // Add each employee to list
+                employees_not_on_holiday.Add(user_employee);
+            }
+
+            foreach(var hold in employees_not_on_holiday)
+            {
+                Console.WriteLine(hold);
+            }
+
+            return employees_not_on_holiday;
         }
 
         public void get_all_employees()
