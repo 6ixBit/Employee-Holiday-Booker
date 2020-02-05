@@ -89,6 +89,7 @@ namespace Admin_desktopp.Models
         {
             Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
             employee.system_role = new_system_role;
+            db.SaveChanges();
         }
 
         // @desc Update the password of an employee
@@ -96,6 +97,7 @@ namespace Admin_desktopp.Models
         {
             Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
             employee.password = new_password;
+            db.SaveChanges();
         }
 
         /// @desc Update the name of an employee
@@ -103,6 +105,7 @@ namespace Admin_desktopp.Models
         {
             Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
             employee.name_ = new_name;
+            db.SaveChanges();
         }
 
         // @desc Update the email of an employee
@@ -110,6 +113,24 @@ namespace Admin_desktopp.Models
         {
             Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
             employee.email = new_email;
+            db.SaveChanges();
+        }
+
+        // @desc Returns employees that are available for a particular date
+        public void get_employees_available_for_specific_date(DateTime date)
+        {
+            var query = (from emp in db.Employees
+                         join hm in db.Holidays 
+                         on emp.Employee_ID equals hm.Employee_ID
+                         where hm.holiday_start == date
+                         select emp); 
+
+            List<int> employees_on_holiday = new List<int>();
+
+            foreach (var employee in query)
+            {
+                Console.WriteLine($"{employee.Employee_ID} - {employee.email}");
+            }
         }
 
         public void get_all_employees()

@@ -58,6 +58,7 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Holiday_bookingsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Employees.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

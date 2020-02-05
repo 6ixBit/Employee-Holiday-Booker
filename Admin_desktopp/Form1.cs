@@ -26,7 +26,9 @@ namespace Admin_desktopp
 
             HolidayModel hm = new HolidayModel();
             //hm.get_all_holiday_requests();
-            hm.get_holiday(2);
+            //hm.get_holiday(2);
+            //hm.reject_holiday(1);
+            em.get_employees_available_for_specific_date(new DateTime(2020, 06, 21));
 
             try
             {       // Query database with form data    
