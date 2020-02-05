@@ -117,7 +117,7 @@ namespace Admin_desktopp.Models
         }
 
         // @desc Returns employees that are available for a particular date
-        public void get_employees_available_for_specific_date(DateTime date)
+        public List<Employees> get_employees_available_for_specific_date(DateTime date)
         {
             var query = (from emp in db.Employees
                          join hm in db.Holidays 
@@ -125,12 +125,26 @@ namespace Admin_desktopp.Models
                          where hm.holiday_start == date
                          select emp); 
 
-            List<int> employees_on_holiday = new List<int>();
+            List<Employees> employees_on_holiday = new List<Employees>();
 
             foreach (var employee in query)
             {
-                Console.WriteLine($"{employee.Employee_ID} - {employee.email}");
+                // New Instance from Holidays class for each result
+                Employees user_employee = new Employees();
+
+                user_employee.Name_ = employee.name_;
+                user_employee.Email = employee.email;
+                user_employee.Password = employee.password;
+                user_employee.System_role = employee.system_role;
+                user_employee.Join_date = (DateTime)employee.join_date;
+                user_employee.Department = employee.department;
+                user_employee.Employee_role = employee.employee_role;
+
+                // Add each employee to list
+                employees_on_holiday.Add(user_employee);
             }
+            Console.WriteLine(employees_on_holiday[0]);
+            return employees_on_holiday;
         }
 
         public void get_all_employees()

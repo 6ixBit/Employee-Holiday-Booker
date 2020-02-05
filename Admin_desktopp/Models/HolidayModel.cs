@@ -100,10 +100,5 @@ namespace Admin_desktopp.Models
             return employees_not_on_holiday;
         }
 
-
-
-
-
-
     }
 }
