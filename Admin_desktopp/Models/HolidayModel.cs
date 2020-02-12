@@ -11,11 +11,13 @@ namespace Admin_desktopp.Models
     {
         readonly HolidayBookingsEntities db = new HolidayBookingsEntities();
 
-        // @desc Returns all holiday requests 
-        public List<Holidays> get_all_holiday_requests()
+        // @desc Returns all outstanding holiday requests for admin to see.
+        // On insert of holidays by employees set status to pending so that they 
+        // can be viewed by the admin as they're outstanding.
+        public List<Holidays> get_outstanding_holiday_requests()
         {
             // Query to select all elements
-            var query = (from hol in db.Holidays select hol);
+            var query = (from hol in db.Holidays where hol.holiday_status == "Pending" select hol);
 
             List<Holidays> userHolidays = new List<Holidays>();
 
@@ -33,6 +35,10 @@ namespace Admin_desktopp.Models
 
                 // Add each holiday object to list
                 userHolidays.Add(my_holiday);
+            }
+            foreach (var hold in userHolidays)
+            {
+                Console.WriteLine(hold);
             }
             return userHolidays;
         }

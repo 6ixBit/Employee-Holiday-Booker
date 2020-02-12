@@ -174,15 +174,10 @@ namespace Admin_desktopp.Models
                 // Add each employee to list
                 employees_not_on_holiday.Add(user_employee);
             }
-
-            foreach(var hold in employees_not_on_holiday)
-            {
-                Console.WriteLine(hold);
-            }
-
             return employees_not_on_holiday;
         }
 
+        // @desc Returns all employees from the database
         public void get_all_employees()
         {
 

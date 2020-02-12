@@ -22,14 +22,12 @@ namespace Admin_desktopp
         private void login_button_Click(object sender, EventArgs e)
         {
             EmployeeModel em = new EmployeeModel();
-            //em.get_system_role("admin@admin.com");
-
+  
             HolidayModel hm = new HolidayModel();
-            //hm.get_all_holiday_requests();
-            //hm.get_holiday(2);
-            //hm.reject_holiday(1);
+            hm.get_outstanding_holiday_requests();
+       
             //em.get_employees_available_for_specific_date(new DateTime(2020, 06, 21));
-            em.get_employees_not_available_for_specific_date(new DateTime(2020, 04, 14));
+            //em.get_employees_not_available_for_specific_date(new DateTime(2020, 04, 14));
 
             try
             {       // Query database with form data    
