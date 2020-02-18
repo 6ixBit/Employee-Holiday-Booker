@@ -29,9 +29,10 @@ namespace Admin_desktopp.Models
         }
 
         // @desc Returns info about user if email is matched
-        public void get_employee(String employee_email)
+        public String get_employee(int employee_id)
         { //: TODO Add try catch to handle errors
-            Employee employee = db.Employees.FirstOrDefault(e => e.email == employee_email);
+            Employee employee = db.Employees.FirstOrDefault(e => e.Employee_ID == employee_id);
+            return employee.email;
         }
 
         // @desc Returns user info if employee exists, else false
