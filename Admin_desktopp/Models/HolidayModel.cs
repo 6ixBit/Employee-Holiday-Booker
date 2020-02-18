@@ -16,7 +16,7 @@ namespace Admin_desktopp.Models
         // can be viewed by the admin as they're outstanding.
         public List<Holidays> get_outstanding_holiday_requests()
         {
-            // Query to select all elements
+            // Query to select all elements that are pending
             var query = (from hol in db.Holidays where hol.holiday_status == "Pending" select hol);
 
             List<Holidays> userHolidays = new List<Holidays>();
@@ -86,6 +86,5 @@ namespace Admin_desktopp.Models
             holiday.holiday_status = "Rejected";
             db.SaveChanges();
         }
-
     }
 }

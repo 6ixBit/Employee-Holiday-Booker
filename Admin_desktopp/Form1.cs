@@ -22,19 +22,22 @@ namespace Admin_desktopp
         private void login_button_Click(object sender, EventArgs e)
         {
             EmployeeModel em = new EmployeeModel();
-  
-            HolidayModel hm = new HolidayModel();
-            hm.get_outstanding_holiday_requests();
-       
-            //em.get_employees_available_for_specific_date(new DateTime(2020, 06, 21));
-            //em.get_employees_not_available_for_specific_date(new DateTime(2020, 04, 14));
 
+            em.get_all_employees();
+       
             try
-            {       // Query database with form data    
+            {         
                 if (em.login_employee(username_textBox.Text, password_textBox.Text) == false)
-                {
+                {   // IF login fails  
                     failed_login_Label.Visible = true;
                 }
+
+                // Hide login panels and show main app
+                login_Panel.Hide();
+                main_Panel.Show();
+
+                // Spawn data grids
+
 
             } catch (Exception err)
             { 

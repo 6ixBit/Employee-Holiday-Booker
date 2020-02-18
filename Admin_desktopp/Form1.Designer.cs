@@ -35,7 +35,14 @@
             this.password_Label = new System.Windows.Forms.Label();
             this.login_Panel = new System.Windows.Forms.Panel();
             this.failed_login_Label = new System.Windows.Forms.Label();
+            this.main_Panel = new System.Windows.Forms.Panel();
+            this.Employee_dataGrid = new System.Windows.Forms.DataGridView();
+            this.view_holidays_button = new System.Windows.Forms.Button();
+            this.view_users_btn = new System.Windows.Forms.Button();
+            this.user_panel_label = new System.Windows.Forms.Label();
             this.login_Panel.SuspendLayout();
+            this.main_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // login_button
@@ -89,9 +96,9 @@
             this.login_Panel.Controls.Add(this.password_Label);
             this.login_Panel.Controls.Add(this.password_textBox);
             this.login_Panel.Controls.Add(this.login_button);
-            this.login_Panel.Location = new System.Drawing.Point(284, 109);
+            this.login_Panel.Location = new System.Drawing.Point(75, 434);
             this.login_Panel.Name = "login_Panel";
-            this.login_Panel.Size = new System.Drawing.Size(331, 195);
+            this.login_Panel.Size = new System.Drawing.Size(338, 194);
             this.login_Panel.TabIndex = 6;
             // 
             // failed_login_Label
@@ -105,17 +112,71 @@
             this.failed_login_Label.Text = "Failed to login, the details you enetered are inncorrect!";
             this.failed_login_Label.Visible = false;
             // 
+            // main_Panel
+            // 
+            this.main_Panel.Controls.Add(this.user_panel_label);
+            this.main_Panel.Controls.Add(this.Employee_dataGrid);
+            this.main_Panel.Location = new System.Drawing.Point(12, 12);
+            this.main_Panel.Name = "main_Panel";
+            this.main_Panel.Size = new System.Drawing.Size(1187, 397);
+            this.main_Panel.TabIndex = 7;
+            this.main_Panel.Visible = false;
+            // 
+            // Employee_dataGrid
+            // 
+            this.Employee_dataGrid.AllowUserToDeleteRows = false;
+            this.Employee_dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Employee_dataGrid.Location = new System.Drawing.Point(14, 61);
+            this.Employee_dataGrid.Name = "Employee_dataGrid";
+            this.Employee_dataGrid.ReadOnly = true;
+            this.Employee_dataGrid.Size = new System.Drawing.Size(642, 228);
+            this.Employee_dataGrid.TabIndex = 0;
+            // 
+            // view_holidays_button
+            // 
+            this.view_holidays_button.Location = new System.Drawing.Point(568, 406);
+            this.view_holidays_button.Name = "view_holidays_button";
+            this.view_holidays_button.Size = new System.Drawing.Size(82, 23);
+            this.view_holidays_button.TabIndex = 7;
+            this.view_holidays_button.Text = "View Holidays";
+            this.view_holidays_button.UseVisualStyleBackColor = true;
+            // 
+            // view_users_btn
+            // 
+            this.view_users_btn.Location = new System.Drawing.Point(487, 406);
+            this.view_users_btn.Name = "view_users_btn";
+            this.view_users_btn.Size = new System.Drawing.Size(75, 23);
+            this.view_users_btn.TabIndex = 8;
+            this.view_users_btn.Text = "View Users";
+            this.view_users_btn.UseVisualStyleBackColor = true;
+            // 
+            // user_panel_label
+            // 
+            this.user_panel_label.AutoSize = true;
+            this.user_panel_label.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.user_panel_label.Location = new System.Drawing.Point(9, 15);
+            this.user_panel_label.Name = "user_panel_label";
+            this.user_panel_label.Size = new System.Drawing.Size(154, 28);
+            this.user_panel_label.TabIndex = 7;
+            this.user_panel_label.Text = "All Employees";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 414);
+            this.ClientSize = new System.Drawing.Size(1312, 723);
             this.Controls.Add(this.login_Panel);
+            this.Controls.Add(this.view_users_btn);
+            this.Controls.Add(this.view_holidays_button);
+            this.Controls.Add(this.main_Panel);
             this.Name = "Form1";
             this.Text = "Admin desktop for holiday bookings";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.login_Panel.ResumeLayout(false);
             this.login_Panel.PerformLayout();
+            this.main_Panel.ResumeLayout(false);
+            this.main_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -129,6 +190,11 @@
         private System.Windows.Forms.Label password_Label;
         private System.Windows.Forms.Panel login_Panel;
         private System.Windows.Forms.Label failed_login_Label;
+        private System.Windows.Forms.Panel main_Panel;
+        private System.Windows.Forms.DataGridView Employee_dataGrid;
+        private System.Windows.Forms.Button view_holidays_button;
+        private System.Windows.Forms.Button view_users_btn;
+        private System.Windows.Forms.Label user_panel_label;
     }
 }
 

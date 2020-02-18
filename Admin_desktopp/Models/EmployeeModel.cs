@@ -28,7 +28,7 @@ namespace Admin_desktopp.Models
             db.SaveChanges();
         }
 
-        // @desc Returns info about user if ID is matched
+        // @desc Returns info about user if email is matched
         public void get_employee(String employee_email)
         { //: TODO Add try catch to handle errors
             Employee employee = db.Employees.FirstOrDefault(e => e.email == employee_email);
@@ -37,7 +37,6 @@ namespace Admin_desktopp.Models
         // @desc Returns user info if employee exists, else false
         public bool login_employee(String email, String password)
         {
-
             Employee employee = db.Employees.FirstOrDefault(user => user.email == email && user.password == password);
 
             if (employee != null)
@@ -46,6 +45,7 @@ namespace Admin_desktopp.Models
                 Console.WriteLine(employee.password);
                 Console.WriteLine(employee.Employee_ID);
                 Console.WriteLine(employee.join_date);
+                return true;
             }
             return false;
         }
@@ -177,10 +177,33 @@ namespace Admin_desktopp.Models
             return employees_not_on_holiday;
         }
 
-        // @desc Returns all employees from the database
-        public void get_all_employees()
+        //@desc Returns all employees
+        public List<Employees> get_all_employees()
         {
+            var query = (from emp in db.Employees select emp);
 
+            // List to hold results
+            List<Employees> my_employees = new List<Employees>();
+
+            foreach (var emp in query)
+            {
+                // New Instance from Holidays class for each result
+                Employees user_employee = new Employees();
+                user_employee.Name_ = emp.name_;
+                user_employee.Email = emp.email;
+                user_employee.Password = emp.password;
+                user_employee.System_role = emp.system_role;
+                user_employee.Join_date = (DateTime)emp.join_date;
+                user_employee.Department = emp.department;
+                user_employee.Employee_role = emp.employee_role;
+
+                // Add each employee to list
+                my_employees.Add(user_employee);
+
+                // Testing
+                Console.WriteLine(user_employee);
+            }
+            return my_employees;
         }
     }
 }
