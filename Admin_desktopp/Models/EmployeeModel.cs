@@ -199,9 +199,6 @@ namespace Admin_desktopp.Models
 
                 // Add each employee to list
                 my_employees.Add(user_employee);
-
-                // Testing
-                Console.WriteLine(user_employee);
             }
             return my_employees;
         }

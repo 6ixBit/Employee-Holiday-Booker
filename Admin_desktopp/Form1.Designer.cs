@@ -40,9 +40,17 @@
             this.view_holidays_button = new System.Windows.Forms.Button();
             this.view_users_btn = new System.Windows.Forms.Button();
             this.user_panel_label = new System.Windows.Forms.Label();
+            this.UI_panel = new System.Windows.Forms.Panel();
+            this.Email_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeRole_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Department_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SystemRole_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JoinDate_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.login_Panel.SuspendLayout();
             this.main_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).BeginInit();
+            this.UI_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // login_button
@@ -96,7 +104,7 @@
             this.login_Panel.Controls.Add(this.password_Label);
             this.login_Panel.Controls.Add(this.password_textBox);
             this.login_Panel.Controls.Add(this.login_button);
-            this.login_Panel.Location = new System.Drawing.Point(75, 434);
+            this.login_Panel.Location = new System.Drawing.Point(770, 95);
             this.login_Panel.Name = "login_Panel";
             this.login_Panel.Size = new System.Drawing.Size(338, 194);
             this.login_Panel.TabIndex = 6;
@@ -124,8 +132,16 @@
             // 
             // Employee_dataGrid
             // 
+            this.Employee_dataGrid.AllowUserToAddRows = false;
             this.Employee_dataGrid.AllowUserToDeleteRows = false;
             this.Employee_dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Employee_dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Email_,
+            this.Name_,
+            this.EmployeeRole_,
+            this.Department_,
+            this.SystemRole_,
+            this.JoinDate_});
             this.Employee_dataGrid.Location = new System.Drawing.Point(14, 61);
             this.Employee_dataGrid.Name = "Employee_dataGrid";
             this.Employee_dataGrid.ReadOnly = true;
@@ -134,7 +150,7 @@
             // 
             // view_holidays_button
             // 
-            this.view_holidays_button.Location = new System.Drawing.Point(568, 406);
+            this.view_holidays_button.Location = new System.Drawing.Point(94, 7);
             this.view_holidays_button.Name = "view_holidays_button";
             this.view_holidays_button.Size = new System.Drawing.Size(82, 23);
             this.view_holidays_button.TabIndex = 7;
@@ -143,7 +159,7 @@
             // 
             // view_users_btn
             // 
-            this.view_users_btn.Location = new System.Drawing.Point(487, 406);
+            this.view_users_btn.Location = new System.Drawing.Point(13, 7);
             this.view_users_btn.Name = "view_users_btn";
             this.view_users_btn.Size = new System.Drawing.Size(75, 23);
             this.view_users_btn.TabIndex = 8;
@@ -160,14 +176,59 @@
             this.user_panel_label.TabIndex = 7;
             this.user_panel_label.Text = "All Employees";
             // 
+            // UI_panel
+            // 
+            this.UI_panel.Controls.Add(this.view_users_btn);
+            this.UI_panel.Controls.Add(this.view_holidays_button);
+            this.UI_panel.Location = new System.Drawing.Point(478, 415);
+            this.UI_panel.Name = "UI_panel";
+            this.UI_panel.Size = new System.Drawing.Size(190, 33);
+            this.UI_panel.TabIndex = 9;
+            this.UI_panel.Visible = false;
+            // 
+            // Email_
+            // 
+            this.Email_.HeaderText = "Email";
+            this.Email_.Name = "Email_";
+            this.Email_.ReadOnly = true;
+            // 
+            // Name_
+            // 
+            this.Name_.HeaderText = "Name";
+            this.Name_.Name = "Name_";
+            this.Name_.ReadOnly = true;
+            // 
+            // EmployeeRole_
+            // 
+            this.EmployeeRole_.HeaderText = "Employee Role";
+            this.EmployeeRole_.Name = "EmployeeRole_";
+            this.EmployeeRole_.ReadOnly = true;
+            // 
+            // Department_
+            // 
+            this.Department_.HeaderText = "Department";
+            this.Department_.Name = "Department_";
+            this.Department_.ReadOnly = true;
+            // 
+            // SystemRole_
+            // 
+            this.SystemRole_.HeaderText = "System Role";
+            this.SystemRole_.Name = "SystemRole_";
+            this.SystemRole_.ReadOnly = true;
+            // 
+            // JoinDate_
+            // 
+            this.JoinDate_.HeaderText = "Join Date";
+            this.JoinDate_.Name = "JoinDate_";
+            this.JoinDate_.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1312, 723);
+            this.ClientSize = new System.Drawing.Size(1238, 450);
             this.Controls.Add(this.login_Panel);
-            this.Controls.Add(this.view_users_btn);
-            this.Controls.Add(this.view_holidays_button);
+            this.Controls.Add(this.UI_panel);
             this.Controls.Add(this.main_Panel);
             this.Name = "Form1";
             this.Text = "Admin desktop for holiday bookings";
@@ -177,6 +238,7 @@
             this.main_Panel.ResumeLayout(false);
             this.main_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).EndInit();
+            this.UI_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -195,6 +257,13 @@
         private System.Windows.Forms.Button view_holidays_button;
         private System.Windows.Forms.Button view_users_btn;
         private System.Windows.Forms.Label user_panel_label;
+        private System.Windows.Forms.Panel UI_panel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeRole_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Department_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SystemRole_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JoinDate_;
     }
 }
 
