@@ -105,5 +105,12 @@ namespace Admin_desktopp
             main_Panel.Hide();
             holiday_Panel.Show();
         }
+
+        private void button_create_emp_Click(object sender, EventArgs e)
+        {
+            // Spawn add user form on button click
+            var create_user = new create_employee_form();
+            create_user.Show();
+        }
     }
 }

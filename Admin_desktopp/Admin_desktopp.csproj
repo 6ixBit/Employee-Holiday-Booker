@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="create_employee_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="create_employee_form.Designer.cs">
+      <DependentUpon>create_employee_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>Holiday_bookingsModel.tt</DependentUpon>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="Models\HolidayModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="create_employee_form.resx">
+      <DependentUpon>create_employee_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
