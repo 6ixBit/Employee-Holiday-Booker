@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.submit_new_user_btn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_email = new System.Windows.Forms.TextBox();
+            this.textBox_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox_departments = new System.Windows.Forms.ComboBox();
+            this.textBox_password = new System.Windows.Forms.TextBox();
+            this.comboBox_systemRole = new System.Windows.Forms.ComboBox();
+            this.comboBox_EmployeeRole = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -52,20 +52,21 @@
             this.submit_new_user_btn.TabIndex = 0;
             this.submit_new_user_btn.Text = "Submit";
             this.submit_new_user_btn.UseVisualStyleBackColor = true;
+            this.submit_new_user_btn.Click += new System.EventHandler(this.submit_new_user_btn_Click);
             // 
-            // textBox1
+            // textBox_email
             // 
-            this.textBox1.Location = new System.Drawing.Point(65, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBox_email.Location = new System.Drawing.Point(65, 70);
+            this.textBox_email.Name = "textBox_email";
+            this.textBox_email.Size = new System.Drawing.Size(124, 20);
+            this.textBox_email.TabIndex = 1;
             // 
-            // textBox2
+            // textBox_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(65, 116);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(124, 20);
-            this.textBox2.TabIndex = 2;
+            this.textBox_name.Location = new System.Drawing.Point(65, 116);
+            this.textBox_name.Name = "textBox_name";
+            this.textBox_name.Size = new System.Drawing.Size(124, 20);
+            this.textBox_name.TabIndex = 2;
             // 
             // label1
             // 
@@ -121,36 +122,36 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Department";
             // 
-            // comboBox1
+            // comboBox_departments
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(221, 163);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 11;
+            this.comboBox_departments.FormattingEnabled = true;
+            this.comboBox_departments.Location = new System.Drawing.Point(221, 163);
+            this.comboBox_departments.Name = "comboBox_departments";
+            this.comboBox_departments.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_departments.TabIndex = 11;
             // 
-            // textBox4
+            // textBox_password
             // 
-            this.textBox4.Location = new System.Drawing.Point(221, 70);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 20);
-            this.textBox4.TabIndex = 12;
+            this.textBox_password.Location = new System.Drawing.Point(221, 70);
+            this.textBox_password.Name = "textBox_password";
+            this.textBox_password.Size = new System.Drawing.Size(121, 20);
+            this.textBox_password.TabIndex = 12;
             // 
-            // comboBox2
+            // comboBox_systemRole
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(221, 114);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 13;
+            this.comboBox_systemRole.FormattingEnabled = true;
+            this.comboBox_systemRole.Location = new System.Drawing.Point(221, 114);
+            this.comboBox_systemRole.Name = "comboBox_systemRole";
+            this.comboBox_systemRole.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_systemRole.TabIndex = 13;
             // 
-            // comboBox3
+            // comboBox_EmployeeRole
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(68, 162);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 14;
+            this.comboBox_EmployeeRole.FormattingEnabled = true;
+            this.comboBox_EmployeeRole.Location = new System.Drawing.Point(68, 162);
+            this.comboBox_EmployeeRole.Name = "comboBox_EmployeeRole";
+            this.comboBox_EmployeeRole.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_EmployeeRole.TabIndex = 14;
             // 
             // label4
             // 
@@ -168,21 +169,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 250);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_EmployeeRole);
+            this.Controls.Add(this.comboBox_systemRole);
+            this.Controls.Add(this.textBox_password);
+            this.Controls.Add(this.comboBox_departments);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_name);
+            this.Controls.Add(this.textBox_email);
             this.Controls.Add(this.submit_new_user_btn);
             this.Name = "create_employee_form";
             this.Text = "create_employee_form";
+            this.Load += new System.EventHandler(this.create_employee_form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,18 +193,18 @@
         #endregion
 
         private System.Windows.Forms.Button submit_new_user_btn;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_email;
+        private System.Windows.Forms.TextBox textBox_name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox_departments;
+        private System.Windows.Forms.TextBox textBox_password;
+        private System.Windows.Forms.ComboBox comboBox_systemRole;
+        private System.Windows.Forms.ComboBox comboBox_EmployeeRole;
         private System.Windows.Forms.Label label4;
     }
 }
