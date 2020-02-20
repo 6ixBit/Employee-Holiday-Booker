@@ -36,6 +36,7 @@
             this.login_Panel = new System.Windows.Forms.Panel();
             this.failed_login_Label = new System.Windows.Forms.Label();
             this.main_Panel = new System.Windows.Forms.Panel();
+            this.button_create_emp = new System.Windows.Forms.Button();
             this.user_panel_label = new System.Windows.Forms.Label();
             this.Employee_dataGrid = new System.Windows.Forms.DataGridView();
             this.Email_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +57,10 @@
             this.HolidayStatus_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConstraintsBroken_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.holiday_panel_label = new System.Windows.Forms.Label();
-            this.button_create_emp = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button_edit_employee = new System.Windows.Forms.Button();
+            this.button_delete_employee = new System.Windows.Forms.Button();
             this.login_Panel.SuspendLayout();
             this.main_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).BeginInit();
@@ -134,6 +138,10 @@
             // 
             // main_Panel
             // 
+            this.main_Panel.Controls.Add(this.button_delete_employee);
+            this.main_Panel.Controls.Add(this.button_edit_employee);
+            this.main_Panel.Controls.Add(this.textBox2);
+            this.main_Panel.Controls.Add(this.textBox1);
             this.main_Panel.Controls.Add(this.button_create_emp);
             this.main_Panel.Controls.Add(this.user_panel_label);
             this.main_Panel.Controls.Add(this.Employee_dataGrid);
@@ -142,6 +150,16 @@
             this.main_Panel.Size = new System.Drawing.Size(1187, 397);
             this.main_Panel.TabIndex = 7;
             this.main_Panel.Visible = false;
+            // 
+            // button_create_emp
+            // 
+            this.button_create_emp.Location = new System.Drawing.Point(43, 350);
+            this.button_create_emp.Name = "button_create_emp";
+            this.button_create_emp.Size = new System.Drawing.Size(112, 23);
+            this.button_create_emp.TabIndex = 8;
+            this.button_create_emp.Text = "Create Employee";
+            this.button_create_emp.UseVisualStyleBackColor = true;
+            this.button_create_emp.Click += new System.EventHandler(this.button_create_emp_Click);
             // 
             // user_panel_label
             // 
@@ -170,6 +188,7 @@
             this.Employee_dataGrid.ReadOnly = true;
             this.Employee_dataGrid.Size = new System.Drawing.Size(642, 228);
             this.Employee_dataGrid.TabIndex = 0;
+            this.Employee_dataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Employee_dataGrid_CellContentClick);
             // 
             // Email_
             // 
@@ -314,15 +333,38 @@
             this.holiday_panel_label.TabIndex = 0;
             this.holiday_panel_label.Text = "Employee Holidays";
             // 
-            // button_create_emp
+            // textBox1
             // 
-            this.button_create_emp.Location = new System.Drawing.Point(43, 350);
-            this.button_create_emp.Name = "button_create_emp";
-            this.button_create_emp.Size = new System.Drawing.Size(112, 23);
-            this.button_create_emp.TabIndex = 8;
-            this.button_create_emp.Text = "Create employee";
-            this.button_create_emp.UseVisualStyleBackColor = true;
-            this.button_create_emp.Click += new System.EventHandler(this.button_create_emp_Click);
+            this.textBox1.Location = new System.Drawing.Point(584, 353);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 9;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(726, 353);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 10;
+            // 
+            // button_edit_employee
+            // 
+            this.button_edit_employee.Location = new System.Drawing.Point(191, 350);
+            this.button_edit_employee.Name = "button_edit_employee";
+            this.button_edit_employee.Size = new System.Drawing.Size(90, 23);
+            this.button_edit_employee.TabIndex = 11;
+            this.button_edit_employee.Text = "Edit Employee";
+            this.button_edit_employee.UseVisualStyleBackColor = true;
+            // 
+            // button_delete_employee
+            // 
+            this.button_delete_employee.Location = new System.Drawing.Point(322, 350);
+            this.button_delete_employee.Name = "button_delete_employee";
+            this.button_delete_employee.Size = new System.Drawing.Size(100, 23);
+            this.button_delete_employee.TabIndex = 12;
+            this.button_delete_employee.Text = "Delete Employee";
+            this.button_delete_employee.UseVisualStyleBackColor = true;
+            this.button_delete_employee.Click += new System.EventHandler(this.button_delete_employee_Click);
             // 
             // Form1
             // 
@@ -380,6 +422,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HolidayStatus_;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConstraintsBroken_;
         private System.Windows.Forms.Button button_create_emp;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button_edit_employee;
+        private System.Windows.Forms.Button button_delete_employee;
     }
 }
 

@@ -14,6 +14,7 @@ namespace Admin_desktopp
 {
     public partial class Form1 : Form
     {
+        string selected_emp_email;
         public Form1()
         {
             InitializeComponent();
@@ -111,6 +112,46 @@ namespace Admin_desktopp
             // Spawn add user form on button click
             var create_user = new create_employee_form();
             create_user.Show();
+        }
+
+        private void Employee_dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Set index on clicked event
+            int index = e.RowIndex;
+
+            // Map row clicked on to a variable
+            DataGridViewRow selectedrow = Employee_dataGrid.Rows[index];
+
+            // Store email of selected user
+            string selected_user = selectedrow.Cells[0].Value.ToString();
+
+            textBox1.Text = selected_user;
+            textBox2.Text = selectedrow.Cells[1].Value.ToString();
+
+            // Test
+            selected_emp_email = selectedrow.Cells[0].Value.ToString();
+        }
+
+        private void button_delete_employee_Click(object sender, EventArgs e)
+        {
+            bool check_value = string.IsNullOrEmpty(selected_emp_email);
+
+            if (check_value == true)
+            {
+                // IF empty then display something else
+                MessageBox.Show("No user has been selected", "Action failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            } else
+            {
+                DialogResult delete_user = MessageBox.Show($"Are you sure you want to delete: {selected_emp_email}", "Delete user", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (delete_user == DialogResult.Yes)
+                {
+                    // IF user selects yes then delete employee
+                    EmployeeModel em = new EmployeeModel();
+                    em.delete_employee(selected_emp_email);
+                }
+            }
         }
     }
 }

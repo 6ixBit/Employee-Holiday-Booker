@@ -136,6 +136,7 @@
             this.textBox_password.Name = "textBox_password";
             this.textBox_password.Size = new System.Drawing.Size(121, 20);
             this.textBox_password.TabIndex = 12;
+            this.textBox_password.UseSystemPasswordChar = true;
             // 
             // comboBox_systemRole
             // 

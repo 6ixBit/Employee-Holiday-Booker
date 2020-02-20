@@ -70,6 +70,7 @@ namespace Admin_desktopp
             {
                 em.add_employee(new_user.name_, new_user.email, new_user.password, new_user.employee_role, new_user.department, new_user.system_role);
                 MessageBox.Show($"Successfully added new user: {new_user.email}");
+                this.Close();
             } catch (Exception ex)
             {
                 // Spawn message box to alert user that insert failed
