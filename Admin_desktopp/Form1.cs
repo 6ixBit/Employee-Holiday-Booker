@@ -14,7 +14,7 @@ namespace Admin_desktopp
 {
     public partial class Form1 : Form
     {
-        string selected_emp_email;
+        private string selected_emp_email;
         public Form1()
         {
             InitializeComponent();
@@ -122,13 +122,6 @@ namespace Admin_desktopp
             // Map row clicked on to a variable
             DataGridViewRow selectedrow = Employee_dataGrid.Rows[index];
 
-            // Store email of selected user
-            string selected_user = selectedrow.Cells[0].Value.ToString();
-
-            textBox1.Text = selected_user;
-            textBox2.Text = selectedrow.Cells[1].Value.ToString();
-
-            // Test
             selected_emp_email = selectedrow.Cells[0].Value.ToString();
         }
 
@@ -148,10 +141,33 @@ namespace Admin_desktopp
                 if (delete_user == DialogResult.Yes)
                 {
                     // IF user selects yes then delete employee
-                    EmployeeModel em = new EmployeeModel();
-                    em.delete_employee(selected_emp_email);
+                    try
+                    {
+                        EmployeeModel em = new EmployeeModel();
+                        em.delete_employee(selected_emp_email);
+
+                        // Show message box once its been done
+                        MessageBox.Show("User deleted, click on view users to update table.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } catch (Exception ex)
+                    {
+                        // If it failed alert user that the action failed
+                        MessageBox.Show("Failed to delete user", "Action failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("Error: ", ex);
+                    }
+                   
                 }
             }
+        }
+
+        private void button_edit_employee_Click(object sender, EventArgs e)
+        {
+            var edit_user = new Edit_employee();
+            edit_user.Show();
+        }
+
+        public String SendDetails
+        {
+            get { return selected_emp_email; }
         }
     }
 }

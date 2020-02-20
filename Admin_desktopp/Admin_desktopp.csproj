@@ -61,6 +61,12 @@
     <Compile Include="create_employee_form.Designer.cs">
       <DependentUpon>create_employee_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Edit_employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit_employee.Designer.cs">
+      <DependentUpon>Edit_employee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>Holiday_bookingsModel.tt</DependentUpon>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="create_employee_form.resx">
       <DependentUpon>create_employee_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit_employee.resx">
+      <DependentUpon>Edit_employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -35,6 +35,25 @@ namespace Admin_desktopp.Models
             return employee.email;
         }
 
+        // @desc Returns info about user if email is matched
+        public Employees get_employee_byEmail(string employee_email)
+        { 
+            Employee employee = db.Employees.FirstOrDefault(e => e.email == employee_email);
+
+            // Write Db results to employee object
+            Employees my_employee = new Employees
+            {
+                Name_ = employee.name_,
+                Email = employee.email,
+                Password = employee.password,
+                Department = employee.department,
+                System_role = employee.system_role,
+                Employee_role = employee.employee_role
+            };
+
+            return my_employee;
+        }
+
         // @desc Returns user info if employee exists, else false
         public bool login_employee(String email, String password)
         {
