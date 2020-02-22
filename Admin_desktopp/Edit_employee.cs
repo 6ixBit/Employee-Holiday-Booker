@@ -20,7 +20,7 @@ namespace Admin_desktopp
 
         private void Edit_employee_Load(object sender, EventArgs e)
         {
-            // Get instance of previos form
+            // Get instance of previos form - ERROR CANT GET VARIABLE FROM DATAGRID IN FORM 1
             Form1 home_form = new Form1();
 
             // Instance to get access to employee Models for DB access
