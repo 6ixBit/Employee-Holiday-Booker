@@ -51,9 +51,11 @@
             this.view_users_btn = new System.Windows.Forms.Button();
             this.UI_panel = new System.Windows.Forms.Panel();
             this.holiday_Panel = new System.Windows.Forms.Panel();
+            this.button_decline_req = new System.Windows.Forms.Button();
+            this.button_accept_req = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Holiday_dataGrid = new System.Windows.Forms.DataGridView();
-            this.EmployeeEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Holiday_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HolidayStart_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HolidayEnd_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HolidayStatus_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -274,13 +276,35 @@
             // 
             // holiday_Panel
             // 
+            this.holiday_Panel.Controls.Add(this.button_decline_req);
+            this.holiday_Panel.Controls.Add(this.button_accept_req);
             this.holiday_Panel.Controls.Add(this.label1);
             this.holiday_Panel.Controls.Add(this.Holiday_dataGrid);
             this.holiday_Panel.Controls.Add(this.holiday_panel_label);
             this.holiday_Panel.Location = new System.Drawing.Point(18, 486);
             this.holiday_Panel.Name = "holiday_Panel";
-            this.holiday_Panel.Size = new System.Drawing.Size(1181, 279);
+            this.holiday_Panel.Size = new System.Drawing.Size(1181, 298);
             this.holiday_Panel.TabIndex = 10;
+            // 
+            // button_decline_req
+            // 
+            this.button_decline_req.Location = new System.Drawing.Point(291, 260);
+            this.button_decline_req.Name = "button_decline_req";
+            this.button_decline_req.Size = new System.Drawing.Size(75, 23);
+            this.button_decline_req.TabIndex = 11;
+            this.button_decline_req.Text = "Decline";
+            this.button_decline_req.UseVisualStyleBackColor = true;
+            this.button_decline_req.Click += new System.EventHandler(this.button_decline_req_Click);
+            // 
+            // button_accept_req
+            // 
+            this.button_accept_req.Location = new System.Drawing.Point(185, 260);
+            this.button_accept_req.Name = "button_accept_req";
+            this.button_accept_req.Size = new System.Drawing.Size(75, 23);
+            this.button_accept_req.TabIndex = 10;
+            this.button_accept_req.Text = "Accept";
+            this.button_accept_req.UseVisualStyleBackColor = true;
+            this.button_accept_req.Click += new System.EventHandler(this.button_accept_req_Click);
             // 
             // label1
             // 
@@ -298,7 +322,7 @@
             this.Holiday_dataGrid.AllowUserToDeleteRows = false;
             this.Holiday_dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Holiday_dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EmployeeEmail,
+            this.Holiday_ID,
             this.HolidayStart_,
             this.HolidayEnd_,
             this.HolidayStatus_,
@@ -308,12 +332,13 @@
             this.Holiday_dataGrid.ReadOnly = true;
             this.Holiday_dataGrid.Size = new System.Drawing.Size(545, 139);
             this.Holiday_dataGrid.TabIndex = 8;
+            this.Holiday_dataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Holiday_dataGrid_CellContentClick);
             // 
-            // EmployeeEmail
+            // Holiday_ID
             // 
-            this.EmployeeEmail.HeaderText = "Email";
-            this.EmployeeEmail.Name = "EmployeeEmail";
-            this.EmployeeEmail.ReadOnly = true;
+            this.Holiday_ID.HeaderText = "Holiday ID";
+            this.Holiday_ID.Name = "Holiday_ID";
+            this.Holiday_ID.ReadOnly = true;
             // 
             // HolidayStart_
             // 
@@ -399,14 +424,16 @@
         private System.Windows.Forms.Label holiday_panel_label;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView Holiday_dataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeEmail;
+        private System.Windows.Forms.Button button_create_emp;
+        private System.Windows.Forms.Button button_edit_employee;
+        private System.Windows.Forms.Button button_delete_employee;
+        private System.Windows.Forms.Button button_decline_req;
+        private System.Windows.Forms.Button button_accept_req;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Holiday_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn HolidayStart_;
         private System.Windows.Forms.DataGridViewTextBoxColumn HolidayEnd_;
         private System.Windows.Forms.DataGridViewTextBoxColumn HolidayStatus_;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConstraintsBroken_;
-        private System.Windows.Forms.Button button_create_emp;
-        private System.Windows.Forms.Button button_edit_employee;
-        private System.Windows.Forms.Button button_delete_employee;
     }
 }
 

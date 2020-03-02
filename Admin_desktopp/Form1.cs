@@ -15,6 +15,7 @@ namespace Admin_desktopp
     public partial class Form1 : Form
     {
         private string selected_emp_email;
+        private int selected_holiday;
         public Form1()
         {
             InitializeComponent();
@@ -86,7 +87,7 @@ namespace Admin_desktopp
         {
             HolidayModel hm = new HolidayModel();
 
-            // Clear rows to avoid dup;icates upon button click
+            // Clear rows to avoid duplicates upon button click
             Holiday_dataGrid.Rows.Clear();
             Holiday_dataGrid.Refresh();
 
@@ -96,11 +97,7 @@ namespace Admin_desktopp
             // Append results row by row
             foreach (var hol in outstanding_holidays)
             {
-                // To parse employee id to email - FIX NEEDED when passing value to function, returns empty.
-                // EmployeeModel em = new EmployeeModel();
-                // var email = em.get_employee(hol.Employee_ID);
-
-                Holiday_dataGrid.Rows.Add(hol.Employee_ID, hol.Holiday_start, hol.Holiday_end, hol.Holiday_status, hol.Constraints_broken);
+                Holiday_dataGrid.Rows.Add(hol.holiday_id, hol.Holiday_start, hol.Holiday_end, hol.Holiday_status, hol.Constraints_broken);
             }
             // Hide any other panels and show clicked one
             main_Panel.Hide();
@@ -168,6 +165,54 @@ namespace Admin_desktopp
         public String SendDetails
         {
             get { return selected_emp_email; }
+        }
+
+        private void Holiday_dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Set index on clicked event
+            int index = e.RowIndex;
+
+            DataGridViewRow selectedRow = Holiday_dataGrid.Rows[index];
+
+            // Set to global variable so it can be read
+            selected_holiday = int.Parse(selectedRow.Cells[0].Value.ToString());
+        }
+
+        private void button_accept_req_Click(object sender, EventArgs e)
+        {
+            int selected_emp_email = int.Parse(Holiday_dataGrid.CurrentCell.Value.ToString());
+
+            try
+            {
+                HolidayModel hm = new HolidayModel();
+                hm.accept_holiday(selected_emp_email);
+
+                // Update table with new results
+                Holiday_dataGrid.Rows.Clear();
+                Holiday_dataGrid.Refresh();
+            } catch (Exception es)
+            {
+                Console.WriteLine(es);
+                MessageBox.Show("Action failed whilst trying to alter the status of this holiday");
+            }
+            
+        }
+
+        private void button_decline_req_Click(object sender, EventArgs e)
+        {
+            int selected_emp_email = int.Parse(Holiday_dataGrid.CurrentCell.Value.ToString());
+            try
+            {
+                HolidayModel hm = new HolidayModel();
+                hm.reject_holiday(selected_emp_email);
+
+                // Update table with new results
+                Holiday_dataGrid.Refresh();
+            } catch (Exception es)
+            {
+                Console.WriteLine(es);
+                MessageBox.Show("Action failed whilst trying to alter the status of this holiday");
+            }
         }
     }
 }
