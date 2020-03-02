@@ -61,12 +61,22 @@
             this.HolidayStatus_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConstraintsBroken_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.holiday_panel_label = new System.Windows.Forms.Label();
+            this.textBox_search_emp = new System.Windows.Forms.TextBox();
+            this.button_view_working_emps = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.emps_working_dataGridView = new System.Windows.Forms.DataGridView();
+            this.emps_not_working_dataGridView = new System.Windows.Forms.DataGridView();
+            this.emps_not_working = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Emp_emails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.login_Panel.SuspendLayout();
             this.main_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).BeginInit();
             this.UI_panel.SuspendLayout();
             this.holiday_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Holiday_dataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emps_working_dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emps_not_working_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // login_button
@@ -145,7 +155,7 @@
             this.main_Panel.Controls.Add(this.Employee_dataGrid);
             this.main_Panel.Location = new System.Drawing.Point(12, 12);
             this.main_Panel.Name = "main_Panel";
-            this.main_Panel.Size = new System.Drawing.Size(1187, 397);
+            this.main_Panel.Size = new System.Drawing.Size(1329, 388);
             this.main_Panel.TabIndex = 7;
             this.main_Panel.Visible = false;
             // 
@@ -276,14 +286,20 @@
             // 
             // holiday_Panel
             // 
+            this.holiday_Panel.Controls.Add(this.label3);
+            this.holiday_Panel.Controls.Add(this.emps_not_working_dataGridView);
+            this.holiday_Panel.Controls.Add(this.emps_working_dataGridView);
+            this.holiday_Panel.Controls.Add(this.label2);
+            this.holiday_Panel.Controls.Add(this.button_view_working_emps);
+            this.holiday_Panel.Controls.Add(this.textBox_search_emp);
             this.holiday_Panel.Controls.Add(this.button_decline_req);
             this.holiday_Panel.Controls.Add(this.button_accept_req);
             this.holiday_Panel.Controls.Add(this.label1);
             this.holiday_Panel.Controls.Add(this.Holiday_dataGrid);
             this.holiday_Panel.Controls.Add(this.holiday_panel_label);
-            this.holiday_Panel.Location = new System.Drawing.Point(18, 486);
+            this.holiday_Panel.Location = new System.Drawing.Point(12, 486);
             this.holiday_Panel.Name = "holiday_Panel";
-            this.holiday_Panel.Size = new System.Drawing.Size(1181, 298);
+            this.holiday_Panel.Size = new System.Drawing.Size(1329, 302);
             this.holiday_Panel.TabIndex = 10;
             // 
             // button_decline_req
@@ -310,7 +326,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 96);
+            this.label1.Location = new System.Drawing.Point(15, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 16);
             this.label1.TabIndex = 9;
@@ -327,7 +343,7 @@
             this.HolidayEnd_,
             this.HolidayStatus_,
             this.ConstraintsBroken_});
-            this.Holiday_dataGrid.Location = new System.Drawing.Point(8, 115);
+            this.Holiday_dataGrid.Location = new System.Drawing.Point(8, 105);
             this.Holiday_dataGrid.Name = "Holiday_dataGrid";
             this.Holiday_dataGrid.ReadOnly = true;
             this.Holiday_dataGrid.Size = new System.Drawing.Size(545, 139);
@@ -374,11 +390,77 @@
             this.holiday_panel_label.TabIndex = 0;
             this.holiday_panel_label.Text = "Employee Holidays";
             // 
+            // textBox_search_emp
+            // 
+            this.textBox_search_emp.Location = new System.Drawing.Point(983, 55);
+            this.textBox_search_emp.Name = "textBox_search_emp";
+            this.textBox_search_emp.Size = new System.Drawing.Size(100, 20);
+            this.textBox_search_emp.TabIndex = 12;
+            // 
+            // button_view_working_emps
+            // 
+            this.button_view_working_emps.Location = new System.Drawing.Point(1108, 53);
+            this.button_view_working_emps.Name = "button_view_working_emps";
+            this.button_view_working_emps.Size = new System.Drawing.Size(75, 23);
+            this.button_view_working_emps.TabIndex = 13;
+            this.button_view_working_emps.Text = "Search";
+            this.button_view_working_emps.UseVisualStyleBackColor = true;
+            this.button_view_working_emps.Click += new System.EventHandler(this.button_view_working_emps_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(858, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(325, 21);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Select a date to view employees working.";
+            // 
+            // emps_working_dataGridView
+            // 
+            this.emps_working_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.emps_working_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Emp_emails});
+            this.emps_working_dataGridView.Location = new System.Drawing.Point(835, 105);
+            this.emps_working_dataGridView.Name = "emps_working_dataGridView";
+            this.emps_working_dataGridView.Size = new System.Drawing.Size(143, 88);
+            this.emps_working_dataGridView.TabIndex = 15;
+            // 
+            // emps_not_working_dataGridView
+            // 
+            this.emps_not_working_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.emps_not_working_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.emps_not_working});
+            this.emps_not_working_dataGridView.Location = new System.Drawing.Point(1059, 105);
+            this.emps_not_working_dataGridView.Name = "emps_not_working_dataGridView";
+            this.emps_not_working_dataGridView.Size = new System.Drawing.Size(144, 88);
+            this.emps_not_working_dataGridView.TabIndex = 16;
+            // 
+            // emps_not_working
+            // 
+            this.emps_not_working.HeaderText = "Employees Not Working";
+            this.emps_not_working.Name = "emps_not_working";
+            // 
+            // Emp_emails
+            // 
+            this.Emp_emails.HeaderText = "Employees Working ";
+            this.Emp_emails.Name = "Emp_emails";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(865, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Format: YYYY-MM-DD";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1273, 806);
+            this.ClientSize = new System.Drawing.Size(1353, 813);
             this.Controls.Add(this.login_Panel);
             this.Controls.Add(this.holiday_Panel);
             this.Controls.Add(this.UI_panel);
@@ -395,6 +477,8 @@
             this.holiday_Panel.ResumeLayout(false);
             this.holiday_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Holiday_dataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emps_working_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emps_not_working_dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,6 +518,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HolidayEnd_;
         private System.Windows.Forms.DataGridViewTextBoxColumn HolidayStatus_;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConstraintsBroken_;
+        private System.Windows.Forms.DataGridView emps_not_working_dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emps_not_working;
+        private System.Windows.Forms.DataGridView emps_working_dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Emp_emails;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button_view_working_emps;
+        private System.Windows.Forms.TextBox textBox_search_emp;
+        private System.Windows.Forms.Label label3;
     }
 }
 

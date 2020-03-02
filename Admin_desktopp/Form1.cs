@@ -19,6 +19,14 @@ namespace Admin_desktopp
         public Form1()
         {
             InitializeComponent();
+            EmployeeModel em = new EmployeeModel();
+
+            HolidayModel hm = new HolidayModel();
+            hm.get_holiday(2);
+
+            DateTime searched_date = Convert.ToDateTime("2020-02-21 00:00:00");
+            //Console.WriteLine(em.get_employees_not_available_for_specific_date(searched_date));
+            Console.WriteLine(em.get_employees_available_for_specific_date(searched_date));
         }
 
         private void login_button_Click(object sender, EventArgs e)
@@ -213,6 +221,48 @@ namespace Admin_desktopp
                 Console.WriteLine(es);
                 MessageBox.Show("Action failed whilst trying to alter the status of this holiday");
             }
+        }
+
+        private void button_view_working_emps_Click(object sender, EventArgs e)
+        {
+            string searched_term = textBox_search_emp.Text;
+            try
+            {
+                // Convert searched term to date to be searched for.
+                DateTime searched_date = Convert.ToDateTime(searched_term);
+
+                // Refresh and clear tables upon every search
+                emps_working_dataGridView.Rows.Clear();
+                emps_working_dataGridView.Refresh();
+
+                emps_working_dataGridView.Rows.Clear();
+                emps_not_working_dataGridView.Refresh();
+
+                // Get instance to interact with methods
+                EmployeeModel em = new EmployeeModel();
+
+                // Fetch results from database
+                List<Employees> available_employees = em.get_employees_available_for_specific_date(searched_date);
+                List<Employees> unavailable_employees = em.get_employees_not_available_for_specific_date(searched_date);
+
+                // Add results to tables.
+                foreach(var avail_emp in available_employees)
+                {
+                    emps_working_dataGridView.Rows.Add(avail_emp.Email);
+                }
+
+                foreach(var unavail_emp in unavailable_employees)
+                {
+                    emps_not_working_dataGridView.Rows.Add(unavail_emp.Email);
+                }
+
+            } catch (Exception es)
+            {
+                MessageBox.Show("The input you entered was invalid", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Console.WriteLine(es);
+            }
+            
+
         }
     }
 }
