@@ -494,7 +494,6 @@
         private System.Windows.Forms.Panel login_Panel;
         private System.Windows.Forms.Label failed_login_Label;
         private System.Windows.Forms.Panel main_Panel;
-        private System.Windows.Forms.DataGridView Employee_dataGrid;
         private System.Windows.Forms.Button view_holidays_button;
         private System.Windows.Forms.Button view_users_btn;
         private System.Windows.Forms.Label user_panel_label;
@@ -527,6 +526,7 @@
         private System.Windows.Forms.Button button_view_working_emps;
         private System.Windows.Forms.TextBox textBox_search_emp;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.DataGridView Employee_dataGrid;
     }
 }
 

@@ -132,6 +132,14 @@ namespace Admin_desktopp.Models
             db.SaveChanges();
         }
 
+        // @desc Update the department of the employee
+        public void edit_employee_department(String email, String new_department)
+        {
+            Employee employee = db.Employees.FirstOrDefault(e => e.email == email);
+            employee.department = new_department;
+            db.SaveChanges();
+        }
+
         // @desc Returns employees that are available for a particular date
         public List<Employees> get_employees_available_for_specific_date(DateTime date)
         {

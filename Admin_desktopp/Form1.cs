@@ -187,11 +187,6 @@ namespace Admin_desktopp
             edit_user.Show();
         }
 
-        public string SendDetails()
-        {
-            return Employee_dataGrid.CurrentCell.Value.ToString();
-        }
-
         private void Holiday_dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Set index on clicked event
