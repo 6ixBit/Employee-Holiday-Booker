@@ -178,12 +178,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox_edit_password;
-        private System.Windows.Forms.TextBox textBox_edit_name;
-        private System.Windows.Forms.TextBox textBox_edit_email;
-        private System.Windows.Forms.ComboBox comboBox_edit_department;
-        private System.Windows.Forms.ComboBox comboBox_edit_emp_role;
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -191,6 +185,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox_edit_sysRole;
+        public System.Windows.Forms.TextBox textBox_edit_password;
+        public System.Windows.Forms.TextBox textBox_edit_name;
+        public System.Windows.Forms.TextBox textBox_edit_email;
+        public System.Windows.Forms.ComboBox comboBox_edit_department;
+        public System.Windows.Forms.ComboBox comboBox_edit_emp_role;
+        public System.Windows.Forms.ComboBox comboBox_edit_sysRole;
     }
 }

@@ -166,13 +166,30 @@ namespace Admin_desktopp
 
         private void button_edit_employee_Click(object sender, EventArgs e)
         {
-            var edit_user = new Edit_employee();
+            Edit_employee edit_user = new Edit_employee();
+
+            string emp_email = Employee_dataGrid.CurrentCell.Value.ToString();
+
+            // Get employee details usign selected employee.
+            EmployeeModel em = new EmployeeModel();
+            var fetched_employee = em.get_employee_byEmail(emp_email);
+
+            // Assign values to form elements
+            edit_user.textBox_edit_email.Text = emp_email;
+
+            edit_user.textBox_edit_name.Text = fetched_employee.Name_;
+            edit_user.textBox_edit_password.Text = fetched_employee.Password;
+            edit_user.comboBox_edit_department.Text = fetched_employee.Department;
+            edit_user.comboBox_edit_emp_role.Text = fetched_employee.Employee_role;
+            edit_user.comboBox_edit_sysRole.Text = fetched_employee.System_role;
+
+            //Show edit form.
             edit_user.Show();
         }
 
-        public String SendDetails
+        public string SendDetails()
         {
-            get { return selected_emp_email; }
+            return Employee_dataGrid.CurrentCell.Value.ToString();
         }
 
         private void Holiday_dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -261,8 +278,6 @@ namespace Admin_desktopp
                 MessageBox.Show("The input you entered was invalid", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Console.WriteLine(es);
             }
-            
-
         }
     }
 }
