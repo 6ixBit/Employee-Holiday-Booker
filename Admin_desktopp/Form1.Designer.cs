@@ -130,7 +130,7 @@
             this.login_Panel.Controls.Add(this.password_Label);
             this.login_Panel.Controls.Add(this.password_textBox);
             this.login_Panel.Controls.Add(this.login_button);
-            this.login_Panel.Location = new System.Drawing.Point(757, 48);
+            this.login_Panel.Location = new System.Drawing.Point(531, 89);
             this.login_Panel.Name = "login_Panel";
             this.login_Panel.Size = new System.Drawing.Size(338, 194);
             this.login_Panel.TabIndex = 6;
@@ -298,9 +298,9 @@
             this.holiday_Panel.Controls.Add(this.label1);
             this.holiday_Panel.Controls.Add(this.Holiday_dataGrid);
             this.holiday_Panel.Controls.Add(this.holiday_panel_label);
-            this.holiday_Panel.Location = new System.Drawing.Point(12, 486);
+            this.holiday_Panel.Location = new System.Drawing.Point(12, 12);
             this.holiday_Panel.Name = "holiday_Panel";
-            this.holiday_Panel.Size = new System.Drawing.Size(1329, 302);
+            this.holiday_Panel.Size = new System.Drawing.Size(1326, 385);
             this.holiday_Panel.TabIndex = 10;
             // 
             // label3
@@ -461,7 +461,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 813);
+            this.ClientSize = new System.Drawing.Size(1353, 459);
             this.Controls.Add(this.login_Panel);
             this.Controls.Add(this.holiday_Panel);
             this.Controls.Add(this.UI_panel);
