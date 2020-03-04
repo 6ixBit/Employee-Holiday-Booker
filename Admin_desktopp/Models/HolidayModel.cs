@@ -73,7 +73,6 @@ namespace Admin_desktopp.Models
 
                 // Add each holiday object to list
                 userHolidays.Add(my_holiday);
-                Console.WriteLine(userHolidays);
             }
 
             return userHolidays;

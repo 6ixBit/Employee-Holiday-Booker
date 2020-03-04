@@ -73,6 +73,8 @@
             this.seniorStaff_Absent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.holiday_panel_label = new System.Windows.Forms.Label();
+            this.button_Calendar = new System.Windows.Forms.Button();
+            this.monthCalendarHoliday = new System.Windows.Forms.MonthCalendar();
             this.login_Panel.SuspendLayout();
             this.main_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).BeginInit();
@@ -134,7 +136,7 @@
             this.login_Panel.Controls.Add(this.password_Label);
             this.login_Panel.Controls.Add(this.password_textBox);
             this.login_Panel.Controls.Add(this.login_button);
-            this.login_Panel.Location = new System.Drawing.Point(560, 61);
+            this.login_Panel.Location = new System.Drawing.Point(466, 95);
             this.login_Panel.Name = "login_Panel";
             this.login_Panel.Size = new System.Drawing.Size(338, 194);
             this.login_Panel.TabIndex = 6;
@@ -152,6 +154,8 @@
             // 
             // main_Panel
             // 
+            this.main_Panel.Controls.Add(this.monthCalendarHoliday);
+            this.main_Panel.Controls.Add(this.button_Calendar);
             this.main_Panel.Controls.Add(this.button_delete_employee);
             this.main_Panel.Controls.Add(this.button_edit_employee);
             this.main_Panel.Controls.Add(this.button_create_emp);
@@ -489,6 +493,23 @@
             this.holiday_panel_label.TabIndex = 0;
             this.holiday_panel_label.Text = "Employee Holidays";
             // 
+            // button_Calendar
+            // 
+            this.button_Calendar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_Calendar.Location = new System.Drawing.Point(658, 342);
+            this.button_Calendar.Name = "button_Calendar";
+            this.button_Calendar.Size = new System.Drawing.Size(101, 31);
+            this.button_Calendar.TabIndex = 13;
+            this.button_Calendar.Text = "View Calendar";
+            this.button_Calendar.UseVisualStyleBackColor = true;
+            this.button_Calendar.Click += new System.EventHandler(this.button_Calendar_Click);
+            // 
+            // monthCalendarHoliday
+            // 
+            this.monthCalendarHoliday.Location = new System.Drawing.Point(910, 133);
+            this.monthCalendarHoliday.Name = "monthCalendarHoliday";
+            this.monthCalendarHoliday.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,6 +584,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn seniorStaff_Absent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn holiday_available;
+        private System.Windows.Forms.Button button_Calendar;
+        private System.Windows.Forms.MonthCalendar monthCalendarHoliday;
     }
 }
 

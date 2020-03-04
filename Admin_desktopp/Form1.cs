@@ -19,6 +19,8 @@ namespace Admin_desktopp
         public Form1()
         {
             InitializeComponent();
+            monthCalendarHoliday.Hide();
+
             EmployeeModel em = new EmployeeModel();
 
             HolidayModel hm = new HolidayModel();
@@ -273,6 +275,32 @@ namespace Admin_desktopp
                 MessageBox.Show("The input you entered was invalid", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Console.WriteLine(es);
             }
+        }
+
+        private void button_Calendar_Click(object sender, EventArgs e)
+        {
+            // When this button is clicked, open calndar for a user
+            DateTime date1 = new DateTime(2020, 08, 01);
+            DateTime date2 = new DateTime(2020, 08, 05);
+
+            // Dyanimc arraylist to hold dates between days
+            var absentDates = new List<DateTime>();
+
+            // Add days between dates to arraylist
+            for (var dt = date1; dt <= date2; dt = dt.AddDays(1))
+            {
+                absentDates.Add((DateTime)dt);
+            }
+
+            // Convert arraylist with dates to array so they can be set to Bold in Calendar
+            DateTime[] actualAbsentDates = absentDates.ToArray();
+            monthCalendarHoliday.BoldedDates = actualAbsentDates;
+
+            // Show Calendar
+            monthCalendarHoliday.Show();
+
+            EmployeeModel em = new EmployeeModel();
+            em.get_employee_holidays("james@gmail.com");
         }
     }
 }

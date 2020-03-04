@@ -206,6 +206,39 @@ namespace Admin_desktopp.Models
             return employees_not_on_holiday;
         }
 
+        // Using employee email, get holiday dates where stats = accepted and all constraints are 0
+        public List<Holidays> get_employee_holidays(string employee_email)
+        {
+            // JOIN the two tables and return the holiday dates where the email passed is equal to that 
+            // within the table and the status of the holiday is accepted and therefore constraints met.
+            var query = (from emp in db.Employees
+                         join hm in db.Holidays
+                         on emp.Employee_ID equals hm.Employee_ID
+                         where emp.email == employee_email && 
+                         hm.holiday_status == "Accepted" &&
+                         hm.days_exceeded == false && 
+                         hm.head_depHead_absent == false &&
+                         hm.seniorStaff_absent == false &&
+                         hm.Department_absent == false
+                         select hm).Distinct();
+
+            List<Holidays> userHolidays = new List<Holidays>();
+
+            foreach(var holiday in query)
+            {
+                // New Instance from Holidays class for each result
+                Holidays my_holiday = new Holidays();
+
+                my_holiday.Holiday_start = (DateTime)holiday.holiday_start;
+                my_holiday.Holiday_end = (DateTime)holiday.holiday_end;
+
+                // Add each holiday object to list
+                userHolidays.Add(my_holiday);
+                Console.WriteLine($"Dash: {my_holiday.Holiday_start} - {my_holiday.Holiday_end}");
+            }
+            return userHolidays;
+        }
+
         //@desc Returns all employees
         public List<Employees> get_all_employees()
         {
