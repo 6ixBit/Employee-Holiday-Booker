@@ -15,10 +15,13 @@ namespace Admin_desktopp
     public partial class Holiday
     {
         public int Holiday_ID { get; set; }
-        public Nullable<int> Employee_ID { get; set; }
+        public int Employee_ID { get; set; }
         public Nullable<System.DateTime> holiday_start { get; set; }
         public Nullable<System.DateTime> holiday_end { get; set; }
         public string holiday_status { get; set; }
-        public Nullable<bool> constraints_broken { get; set; }
+        public Nullable<bool> days_exceeded { get; set; }
+        public Nullable<bool> head_depHead_absent { get; set; }
+        public Nullable<bool> seniorStaff_absent { get; set; }
+        public Nullable<bool> Department_absent { get; set; }
     }
 }

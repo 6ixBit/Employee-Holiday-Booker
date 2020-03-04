@@ -9,7 +9,8 @@ namespace Admin_desktopp.Models
 {
     public class HolidayModel
     {
-        readonly HolidayBookingsEntities db = new HolidayBookingsEntities();
+        
+        readonly EmpHolidayEntities db = new EmpHolidayEntities();
 
         // @desc Returns all outstanding holiday requests for admin to see.
         // On insert of holidays by employees set status to pending so that they 
@@ -31,7 +32,10 @@ namespace Admin_desktopp.Models
                 my_holiday.Holiday_start = (DateTime)holiday.holiday_start;
                 my_holiday.Holiday_end = (DateTime)holiday.holiday_end;
                 my_holiday.Holiday_status = holiday.holiday_status;
-                my_holiday.Constraints_broken = (bool)holiday.constraints_broken;
+                my_holiday.Days_exceeded = (bool)holiday.days_exceeded;
+                my_holiday.department_Absent = (bool)holiday.Department_absent;
+                my_holiday.Head_depHead_absent = (bool)holiday.head_depHead_absent;
+                my_holiday.SeniorStaff_absent = (bool)holiday.seniorStaff_absent;
 
                 // Add each holiday object to list
                 userHolidays.Add(my_holiday);
@@ -62,7 +66,10 @@ namespace Admin_desktopp.Models
                 my_holiday.Holiday_start = (DateTime)holiday.holiday_start;
                 my_holiday.Holiday_end = (DateTime)holiday.holiday_end;
                 my_holiday.Holiday_status = holiday.holiday_status;
-                my_holiday.Constraints_broken = (bool)holiday.constraints_broken;
+                my_holiday.Days_exceeded = (bool)holiday.days_exceeded;
+                my_holiday.department_Absent = (bool)holiday.Department_absent;
+                my_holiday.Head_depHead_absent = (bool)holiday.head_depHead_absent;
+                my_holiday.SeniorStaff_absent = (bool)holiday.seniorStaff_absent;
 
                 // Add each holiday object to list
                 userHolidays.Add(my_holiday);

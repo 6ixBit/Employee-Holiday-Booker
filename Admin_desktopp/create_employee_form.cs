@@ -68,7 +68,7 @@ namespace Admin_desktopp
 
             try
             {
-                em.add_employee(new_user.name_, new_user.email, new_user.password, new_user.employee_role, new_user.department, new_user.system_role);
+                em.add_employee(new_user.name_, new_user.email, new_user.password, new_user.employee_role, new_user.department, 30, new_user.system_role);
                 MessageBox.Show($"Successfully added new user: {new_user.email}");
                 this.Close();
             } catch (Exception ex)

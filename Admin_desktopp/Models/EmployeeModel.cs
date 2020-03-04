@@ -8,10 +8,10 @@ namespace Admin_desktopp.Models
 {
     public class EmployeeModel
     {
-        HolidayBookingsEntities db = new HolidayBookingsEntities();
+        readonly EmpHolidayEntities db = new EmpHolidayEntities();
 
         // @desc Adds new employee to database
-        public void add_employee(String name, String email, String password, String employee_role, String department, String system_role="User")
+        public void add_employee(String name, String email, String password, String employee_role, String department, int holiday_days_available=30, String system_role="User")
         {
             // Bind parameters passed to Employee object
             Employee new_user = new Employee
@@ -22,6 +22,7 @@ namespace Admin_desktopp.Models
                 employee_role = employee_role,
                 department = department,
                 join_date = DateTime.Today,
+                holiday_days_available = holiday_days_available,  // Every employee starts with 30 days holiday
                 system_role = system_role
             };
             db.Employees.Add(new_user);
@@ -48,7 +49,8 @@ namespace Admin_desktopp.Models
                 Password = employee.password,
                 Department = employee.department,
                 System_role = employee.system_role,
-                Employee_role = employee.employee_role
+                Employee_role = employee.employee_role,
+                Holiday_days_available = (int)employee.holiday_days_available
             };
 
             return my_employee;
@@ -163,6 +165,7 @@ namespace Admin_desktopp.Models
                 user_employee.Join_date = (DateTime)employee.join_date;
                 user_employee.Department = employee.department;
                 user_employee.Employee_role = employee.employee_role;
+                user_employee.Holiday_days_available = (int)employee.holiday_days_available;
 
                 // Add each employee to list
                 employees_on_holiday.Add(user_employee);
@@ -193,6 +196,7 @@ namespace Admin_desktopp.Models
                 user_employee.Join_date = (DateTime)employee.join_date;
                 user_employee.Department = employee.department;
                 user_employee.Employee_role = employee.employee_role;
+                user_employee.Holiday_days_available = (int)employee.holiday_days_available;
 
                 // Add each employee to list
                 employees_not_on_holiday.Add(user_employee);
@@ -221,6 +225,7 @@ namespace Admin_desktopp.Models
                 user_employee.Join_date = (DateTime)emp.join_date;
                 user_employee.Department = emp.department;
                 user_employee.Employee_role = emp.employee_role;
+                user_employee.Holiday_days_available = (int)emp.holiday_days_available;
 
                 // Add each employee to list
                 my_employees.Add(user_employee);

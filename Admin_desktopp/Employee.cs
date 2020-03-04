@@ -22,5 +22,6 @@ namespace Admin_desktopp
         public string department { get; set; }
         public Nullable<System.DateTime> join_date { get; set; }
         public string system_role { get; set; }
+        public Nullable<int> holiday_days_available { get; set; }
     }
 }

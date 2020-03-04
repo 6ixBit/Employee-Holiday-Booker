@@ -15,6 +15,7 @@ namespace Admin_desktopp
         private string department;
         private DateTime join_date;
         private string system_role;
+        private int holiday_days_available;
 
         public Employees() { }
 
@@ -60,9 +61,15 @@ namespace Admin_desktopp
             set { system_role = value; }
         }
 
+        public int Holiday_days_available
+        {
+            get { return holiday_days_available;  }
+            set { holiday_days_available = value; }
+        }
+
         public override string ToString()
         {
-            return $"{Email} - {Name_} - {Employee_role} - {System_role} - {Join_date}";
+            return $"{Email} - {Name_} - {Employee_role} - {System_role} - {Join_date} - {Holiday_days_available}";
         }
     }
 }

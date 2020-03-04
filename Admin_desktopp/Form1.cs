@@ -84,7 +84,7 @@ namespace Admin_desktopp
             // Append results row by row
             foreach (var emp in all_employees)
             {
-                Employee_dataGrid.Rows.Add(emp.Email, emp.Name_, emp.Employee_role, emp.Department, emp.System_role, emp.Join_date);
+                Employee_dataGrid.Rows.Add(emp.Email, emp.Name_, emp.Employee_role, emp.Department, emp.System_role, emp.Join_date, emp.Holiday_days_available);
             }
             // Hide any other panels and show clicked one
             holiday_Panel.Hide();
@@ -105,7 +105,7 @@ namespace Admin_desktopp
             // Append results row by row
             foreach (var hol in outstanding_holidays)
             {
-                Holiday_dataGrid.Rows.Add(hol.holiday_id, hol.Holiday_start, hol.Holiday_end, hol.Holiday_status, hol.Constraints_broken);
+                Holiday_dataGrid.Rows.Add(hol.holiday_id, hol.Holiday_start, hol.Holiday_end, hol.Holiday_status, hol.Days_exceeded, hol.Head_depHead_absent, hol.SeniorStaff_absent, hol.department_Absent);
             }
             // Hide any other panels and show clicked one
             main_Panel.Hide();
