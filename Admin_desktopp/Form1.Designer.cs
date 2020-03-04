@@ -36,6 +36,8 @@
             this.login_Panel = new System.Windows.Forms.Panel();
             this.failed_login_Label = new System.Windows.Forms.Label();
             this.main_Panel = new System.Windows.Forms.Panel();
+            this.monthCalendarHoliday = new System.Windows.Forms.MonthCalendar();
+            this.button_Calendar = new System.Windows.Forms.Button();
             this.button_delete_employee = new System.Windows.Forms.Button();
             this.button_edit_employee = new System.Windows.Forms.Button();
             this.button_create_emp = new System.Windows.Forms.Button();
@@ -73,8 +75,7 @@
             this.seniorStaff_Absent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.holiday_panel_label = new System.Windows.Forms.Label();
-            this.button_Calendar = new System.Windows.Forms.Button();
-            this.monthCalendarHoliday = new System.Windows.Forms.MonthCalendar();
+            this.label_Calendar = new System.Windows.Forms.Label();
             this.login_Panel.SuspendLayout();
             this.main_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).BeginInit();
@@ -136,7 +137,7 @@
             this.login_Panel.Controls.Add(this.password_Label);
             this.login_Panel.Controls.Add(this.password_textBox);
             this.login_Panel.Controls.Add(this.login_button);
-            this.login_Panel.Location = new System.Drawing.Point(466, 95);
+            this.login_Panel.Location = new System.Drawing.Point(499, 89);
             this.login_Panel.Name = "login_Panel";
             this.login_Panel.Size = new System.Drawing.Size(338, 194);
             this.login_Panel.TabIndex = 6;
@@ -154,6 +155,7 @@
             // 
             // main_Panel
             // 
+            this.main_Panel.Controls.Add(this.label_Calendar);
             this.main_Panel.Controls.Add(this.monthCalendarHoliday);
             this.main_Panel.Controls.Add(this.button_Calendar);
             this.main_Panel.Controls.Add(this.button_delete_employee);
@@ -166,6 +168,23 @@
             this.main_Panel.Size = new System.Drawing.Size(1329, 388);
             this.main_Panel.TabIndex = 7;
             this.main_Panel.Visible = false;
+            // 
+            // monthCalendarHoliday
+            // 
+            this.monthCalendarHoliday.Location = new System.Drawing.Point(933, 152);
+            this.monthCalendarHoliday.Name = "monthCalendarHoliday";
+            this.monthCalendarHoliday.TabIndex = 14;
+            // 
+            // button_Calendar
+            // 
+            this.button_Calendar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_Calendar.Location = new System.Drawing.Point(658, 342);
+            this.button_Calendar.Name = "button_Calendar";
+            this.button_Calendar.Size = new System.Drawing.Size(101, 31);
+            this.button_Calendar.TabIndex = 13;
+            this.button_Calendar.Text = "View Calendar";
+            this.button_Calendar.UseVisualStyleBackColor = true;
+            this.button_Calendar.Click += new System.EventHandler(this.button_Calendar_Click);
             // 
             // button_delete_employee
             // 
@@ -313,7 +332,7 @@
             this.holiday_Panel.Controls.Add(this.label1);
             this.holiday_Panel.Controls.Add(this.Holiday_dataGrid);
             this.holiday_Panel.Controls.Add(this.holiday_panel_label);
-            this.holiday_Panel.Location = new System.Drawing.Point(12, 451);
+            this.holiday_Panel.Location = new System.Drawing.Point(0, 0);
             this.holiday_Panel.Name = "holiday_Panel";
             this.holiday_Panel.Size = new System.Drawing.Size(1326, 385);
             this.holiday_Panel.TabIndex = 10;
@@ -493,28 +512,22 @@
             this.holiday_panel_label.TabIndex = 0;
             this.holiday_panel_label.Text = "Employee Holidays";
             // 
-            // button_Calendar
+            // label_Calendar
             // 
-            this.button_Calendar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button_Calendar.Location = new System.Drawing.Point(658, 342);
-            this.button_Calendar.Name = "button_Calendar";
-            this.button_Calendar.Size = new System.Drawing.Size(101, 31);
-            this.button_Calendar.TabIndex = 13;
-            this.button_Calendar.Text = "View Calendar";
-            this.button_Calendar.UseVisualStyleBackColor = true;
-            this.button_Calendar.Click += new System.EventHandler(this.button_Calendar_Click);
-            // 
-            // monthCalendarHoliday
-            // 
-            this.monthCalendarHoliday.Location = new System.Drawing.Point(910, 133);
-            this.monthCalendarHoliday.Name = "monthCalendarHoliday";
-            this.monthCalendarHoliday.TabIndex = 14;
+            this.label_Calendar.AutoSize = true;
+            this.label_Calendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Calendar.Location = new System.Drawing.Point(885, 128);
+            this.label_Calendar.Name = "label_Calendar";
+            this.label_Calendar.Size = new System.Drawing.Size(310, 15);
+            this.label_Calendar.TabIndex = 15;
+            this.label_Calendar.Text = "Days that employees are absent for are in Bold.";
+            this.label_Calendar.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 840);
+            this.ClientSize = new System.Drawing.Size(1353, 455);
             this.Controls.Add(this.login_Panel);
             this.Controls.Add(this.holiday_Panel);
             this.Controls.Add(this.UI_panel);
@@ -586,6 +599,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn holiday_available;
         private System.Windows.Forms.Button button_Calendar;
         private System.Windows.Forms.MonthCalendar monthCalendarHoliday;
+        private System.Windows.Forms.Label label_Calendar;
     }
 }
 

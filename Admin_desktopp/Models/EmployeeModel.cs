@@ -234,10 +234,10 @@ namespace Admin_desktopp.Models
 
                 // Add each holiday object to list
                 userHolidays.Add(my_holiday);
-                Console.WriteLine($"Dash: {my_holiday.Holiday_start} - {my_holiday.Holiday_end}");
             }
             return userHolidays;
         }
+
         //@desc Returns the days between holidays in an array of dates
         public DateTime[] get_days_between_holiday(DateTime holiday_start, DateTime holiday_end)
         {

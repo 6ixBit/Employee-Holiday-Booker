@@ -290,13 +290,16 @@ namespace Admin_desktopp
                 {
                     monthCalendarHoliday.BoldedDates = em.get_days_between_holiday(date.Holiday_start, date.Holiday_end);
                 }
+
+                // Show Calendar and label associated with it.
+                label_Calendar.Show();
+                monthCalendarHoliday.Show();
             } catch(Exception es)
             {
                 MessageBox.Show("Failed to get holidays for user, can not display absent dates in calendar", "Action failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(es);
             }
-            // Show Calendar
-            monthCalendarHoliday.Show();
+            
         }
     }
 }
