@@ -233,7 +233,7 @@ namespace Admin_desktopp
             } catch (Exception es)
             {
                 Console.WriteLine(es);
-                MessageBox.Show("Action failed whilst trying to alter the status of this holiday");
+                MessageBox.Show("Action failed whilst trying to alter the status of this holiday", "Action failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -279,28 +279,24 @@ namespace Admin_desktopp
 
         private void button_Calendar_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, open calndar for a user
-            DateTime date1 = new DateTime(2020, 08, 01);
-            DateTime date2 = new DateTime(2020, 08, 05);
-
-            // Dyanimc arraylist to hold dates between days
-            var absentDates = new List<DateTime>();
-
-            // Add days between dates to arraylist
-            for (var dt = date1; dt <= date2; dt = dt.AddDays(1))
+            // Get holiday dates that employee is absent for using selected cell in employee table.
+            EmployeeModel em = new EmployeeModel();
+            try
             {
-                absentDates.Add((DateTime)dt);
+                var dates_away = em.get_employee_holidays(Employee_dataGrid.CurrentCell.Value.ToString());
+
+                // Of the dates that they are absent, make them bold in the calendar to represent their absence
+                foreach (var date in dates_away)
+                {
+                    monthCalendarHoliday.BoldedDates = em.get_days_between_holiday(date.Holiday_start, date.Holiday_end);
+                }
+            } catch(Exception es)
+            {
+                MessageBox.Show("Failed to get holidays for user, can not display absent dates in calendar", "Action failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(es);
             }
-
-            // Convert arraylist with dates to array so they can be set to Bold in Calendar
-            DateTime[] actualAbsentDates = absentDates.ToArray();
-            monthCalendarHoliday.BoldedDates = actualAbsentDates;
-
             // Show Calendar
             monthCalendarHoliday.Show();
-
-            EmployeeModel em = new EmployeeModel();
-            em.get_employee_holidays("james@gmail.com");
         }
     }
 }

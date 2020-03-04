@@ -238,6 +238,22 @@ namespace Admin_desktopp.Models
             }
             return userHolidays;
         }
+        //@desc Returns the days between holidays in an array of dates
+        public DateTime[] get_days_between_holiday(DateTime holiday_start, DateTime holiday_end)
+        {
+            // Dyanimc arraylist to hold dates between days
+            var absentDates = new List<DateTime>();
+
+            // Add days between dates to arraylist
+            for (var dt = holiday_start; dt <= holiday_end; dt = dt.AddDays(1))
+            {
+                absentDates.Add((DateTime)dt);
+            }
+
+            // Convert arraylist with dates to array so they can be set to Bold in Calendar
+            DateTime[] actualAbsentDates = absentDates.ToArray();
+            return actualAbsentDates;
+        }
 
         //@desc Returns all employees
         public List<Employees> get_all_employees()
