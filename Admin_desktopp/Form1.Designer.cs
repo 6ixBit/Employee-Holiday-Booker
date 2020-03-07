@@ -36,6 +36,7 @@
             this.login_Panel = new System.Windows.Forms.Panel();
             this.failed_login_Label = new System.Windows.Forms.Label();
             this.main_Panel = new System.Windows.Forms.Panel();
+            this.label_Calendar = new System.Windows.Forms.Label();
             this.monthCalendarHoliday = new System.Windows.Forms.MonthCalendar();
             this.button_Calendar = new System.Windows.Forms.Button();
             this.button_delete_employee = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
             this.seniorStaff_Absent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.holiday_panel_label = new System.Windows.Forms.Label();
-            this.label_Calendar = new System.Windows.Forms.Label();
             this.login_Panel.SuspendLayout();
             this.main_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Employee_dataGrid)).BeginInit();
@@ -168,6 +168,17 @@
             this.main_Panel.Size = new System.Drawing.Size(1329, 388);
             this.main_Panel.TabIndex = 7;
             this.main_Panel.Visible = false;
+            // 
+            // label_Calendar
+            // 
+            this.label_Calendar.AutoSize = true;
+            this.label_Calendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Calendar.Location = new System.Drawing.Point(885, 128);
+            this.label_Calendar.Name = "label_Calendar";
+            this.label_Calendar.Size = new System.Drawing.Size(310, 15);
+            this.label_Calendar.TabIndex = 15;
+            this.label_Calendar.Text = "Days that employees are absent for are in Bold.";
+            this.label_Calendar.Visible = false;
             // 
             // monthCalendarHoliday
             // 
@@ -345,6 +356,7 @@
             this.label3.Size = new System.Drawing.Size(113, 13);
             this.label3.TabIndex = 17;
             this.label3.Text = "Format: YYYY-MM-DD";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // emps_not_working_dataGridView
             // 
@@ -511,17 +523,6 @@
             this.holiday_panel_label.Size = new System.Drawing.Size(204, 28);
             this.holiday_panel_label.TabIndex = 0;
             this.holiday_panel_label.Text = "Employee Holidays";
-            // 
-            // label_Calendar
-            // 
-            this.label_Calendar.AutoSize = true;
-            this.label_Calendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Calendar.Location = new System.Drawing.Point(885, 128);
-            this.label_Calendar.Name = "label_Calendar";
-            this.label_Calendar.Size = new System.Drawing.Size(310, 15);
-            this.label_Calendar.TabIndex = 15;
-            this.label_Calendar.Text = "Days that employees are absent for are in Bold.";
-            this.label_Calendar.Visible = false;
             // 
             // Form1
             // 

@@ -1,0 +1,9 @@
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\bin\Debug\Employee_Desktop.exe.config
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\bin\Debug\Employee_Desktop.exe
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\bin\Debug\Employee_Desktop.pdb
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\obj\Debug\Employee_Desktop.csprojAssemblyReference.cache
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\obj\Debug\Employee_Desktop.Form1.resources
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\obj\Debug\Employee_Desktop.Properties.Resources.resources
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\obj\Debug\Employee_Desktop.csproj.GenerateResource.cache
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\obj\Debug\Employee_Desktop.exe
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\Employee_Desktop\obj\Debug\Employee_Desktop.pdb

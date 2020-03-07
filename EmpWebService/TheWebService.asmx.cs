@@ -34,7 +34,7 @@ namespace EmpWebService
 
         [WebMethod]
         //@desc Submit holiday request
-        public void submit_holiday_request(string email, DateTime holiday_start, DateTime holiday_end, String holiday_status, bool days_exceeded, bool head_depHead_absent, bool seniorStaff_absent, bool Department_absent)
+        public void submit_holiday_request(string email, DateTime holiday_start, DateTime holiday_end, bool days_exceeded, bool head_depHead_absent, bool seniorStaff_absent, bool Department_absent)
         {
             // Get all details for employee based on their email
             var user = get_employee_byEmail(email);
