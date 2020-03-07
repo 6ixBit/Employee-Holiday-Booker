@@ -56,3 +56,7 @@ C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\obj\Debug\EmpWe
 C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\obj\Debug\EmpWebService.csproj.CopyComplete
 C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\obj\Debug\EmpWebService.dll
 C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\obj\Debug\EmpWebService.pdb
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\bin\EntityFramework.dll
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\bin\EntityFramework.SqlServer.dll
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\bin\EntityFramework.xml
+C:\Users\The Emperor\Source\Repos\6ixBit\COMP-1690\EmpWebService\bin\EntityFramework.SqlServer.xml
