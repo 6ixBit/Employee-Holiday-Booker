@@ -12,6 +12,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee_Desktop", "..\Empl
 		{50F313F9-019C-44D7-BD48-E425D903AF22} = {50F313F9-019C-44D7-BD48-E425D903AF22}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee_WebApp", "..\Employee_WebApp\Employee_WebApp.csproj", "{00723895-1440-4D97-B79B-5DD82ECF5C89}"
+	ProjectSection(ProjectDependencies) = postProject
+		{50F313F9-019C-44D7-BD48-E425D903AF22} = {50F313F9-019C-44D7-BD48-E425D903AF22}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +35,10 @@ Global
 		{621BEB5C-6D43-48DA-AE65-B412ECC6AD42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{621BEB5C-6D43-48DA-AE65-B412ECC6AD42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{621BEB5C-6D43-48DA-AE65-B412ECC6AD42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00723895-1440-4D97-B79B-5DD82ECF5C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00723895-1440-4D97-B79B-5DD82ECF5C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00723895-1440-4D97-B79B-5DD82ECF5C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00723895-1440-4D97-B79B-5DD82ECF5C89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
