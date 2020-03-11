@@ -80,5 +80,10 @@ namespace Employee_Desktop
             panel_holiday.Hide();
             panel_login.Show();
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
