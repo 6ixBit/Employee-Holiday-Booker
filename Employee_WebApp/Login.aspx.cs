@@ -32,7 +32,7 @@ namespace Employee_WebApp
                     Session["CurrentUser"] = TextBox_email.Text; // Start a session
 
                     // Redirect to holiday page on successful login
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("SubmitHoliday.aspx");
                 }
             }
             catch (Exception es)

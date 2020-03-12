@@ -60,7 +60,7 @@
             this.panel_login.Controls.Add(this.textBox_password);
             this.panel_login.Controls.Add(this.textBox_email);
             this.panel_login.Controls.Add(this.Login_button);
-            this.panel_login.Location = new System.Drawing.Point(13, 13);
+            this.panel_login.Location = new System.Drawing.Point(0, 0);
             this.panel_login.Name = "panel_login";
             this.panel_login.Size = new System.Drawing.Size(774, 330);
             this.panel_login.TabIndex = 0;
@@ -144,7 +144,7 @@
             this.panel_holiday.Controls.Add(this.textBox_holStart);
             this.panel_holiday.Controls.Add(this.label_empEmail);
             this.panel_holiday.Controls.Add(this.label1);
-            this.panel_holiday.Location = new System.Drawing.Point(13, 349);
+            this.panel_holiday.Location = new System.Drawing.Point(0, 0);
             this.panel_holiday.Name = "panel_holiday";
             this.panel_holiday.Size = new System.Drawing.Size(775, 320);
             this.panel_holiday.TabIndex = 1;
@@ -249,9 +249,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 688);
-            this.Controls.Add(this.panel_holiday);
+            this.ClientSize = new System.Drawing.Size(776, 333);
             this.Controls.Add(this.panel_login);
+            this.Controls.Add(this.panel_holiday);
             this.Name = "Form1";
             this.Text = "Employee Application";
             this.Load += new System.EventHandler(this.Form1_Load);
