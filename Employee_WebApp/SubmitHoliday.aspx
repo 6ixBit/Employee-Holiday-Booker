@@ -31,13 +31,19 @@
             width: 649px;
             text-align: right;
         }
-        .auto-style9 {
-            text-align: center;
-            font-size: large;
-            color: #0099FF;
-        }
         .auto-style10 {
             color: #0099FF;
+            height: 31px;
+        }
+        .auto-style12 {
+            width: 649px;
+            text-align: right;
+            height: 31px;
+        }
+        .auto-style13 {
+            width: 649px;
+            text-align: left;
+            height: 31px;
         }
     </style>
 </head>
@@ -52,7 +58,13 @@
         
         <table class="auto-style3">
             <tr>
-                <td class="auto-style8">&nbsp;</td>
+                <td class="auto-style13">
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ViewHolidays.aspx">View Holidays</asp:HyperLink>
+                </td>
+                <td class="auto-style10">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style12">&nbsp;</td>
                 <td class="auto-style10">Format: YYYY-MM-DD</td>
             </tr>
             <tr>

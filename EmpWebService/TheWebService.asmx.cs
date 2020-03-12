@@ -76,6 +76,42 @@ namespace EmpWebService
 
             return my_employee;
         }
+
+        [WebMethod]
+        public List<Holidays> get_outstanding_holiday_requests_for_employee(string email)
+        {
+            // Get Employee_ID for user by email
+            var user = get_employee_byEmail(email);
+
+            // Query to select all elements that are pending
+            var query = (from hol in db.Holidays where hol.Employee_ID == user.ID_ select hol);
+
+            List<Holidays> userHolidays = new List<Holidays>();
+
+            foreach (var holiday in query)
+            {
+                // New Instance from Holidays class for each result
+                Holidays my_holiday = new Holidays();
+
+                my_holiday.Employee_ID = (int)holiday.Employee_ID;
+                my_holiday.Holiday_ID = holiday.Holiday_ID;
+                my_holiday.Holiday_start = (DateTime)holiday.holiday_start;
+                my_holiday.Holiday_end = (DateTime)holiday.holiday_end;
+                my_holiday.Holiday_status = holiday.holiday_status;
+                my_holiday.Days_exceeded = (bool)holiday.days_exceeded;
+                my_holiday.department_Absent = (bool)holiday.Department_absent;
+                my_holiday.Head_depHead_absent = (bool)holiday.head_depHead_absent;
+                my_holiday.SeniorStaff_absent = (bool)holiday.seniorStaff_absent;
+
+                // Add each holiday object to list
+                userHolidays.Add(my_holiday);
+            }
+            foreach (var hold in userHolidays)
+            {
+                Console.WriteLine(hold);
+            }
+            return userHolidays;
+        }
     }
 
     // Employee class to hold objects with its associated value
@@ -151,5 +187,94 @@ namespace EmpWebService
         {
             return $"{Email} - {Name_} - {Employee_role} - {System_role} - {Join_date} - {Holiday_days_available}";
         }
+    }
+
+    public class Holidays
+    {
+        private int employee_id;
+        public int holiday_id;
+        private DateTime holiday_start;
+        private DateTime holiday_end;
+        private String holiday_status;
+        private bool days_exceeded;
+        private bool head_depHead_absent;
+        private bool seniorStaff_absent;
+        private bool Department_absent;
+
+        public Holidays(int employee_id, int holiday_id, DateTime holiday_start, DateTime holiday_end, String holiday_status, bool days_exceeded, bool head_depHead_absent, bool seniorStaff_absent, bool Department_absent)
+        {
+            this.employee_id = employee_id;
+            this.holiday_id = holiday_id;
+            this.holiday_start = holiday_start;
+            this.holiday_end = holiday_end;
+            this.holiday_status = holiday_status;
+            this.days_exceeded = days_exceeded;
+            this.head_depHead_absent = head_depHead_absent;
+            this.Department_absent = Department_absent;
+            this.seniorStaff_absent = seniorStaff_absent;
+
+        }
+
+        public Holidays() { }
+
+        public int Employee_ID
+        {
+            get { return employee_id; }
+            set { employee_id = value; }
+        }
+
+        public int Holiday_ID
+        {
+            get { return holiday_id; }
+            set { holiday_id = value; }
+        }
+
+        public DateTime Holiday_start
+        {
+            get { return holiday_start; }
+            set { holiday_start = value; }
+        }
+
+        public DateTime Holiday_end
+        {
+            get { return holiday_end; }
+            set { holiday_end = value; }
+        }
+
+        public String Holiday_status
+        {
+            get { return holiday_status; }
+            set { holiday_status = value; }
+        }
+
+        public Boolean Days_exceeded
+        {
+            get { return days_exceeded; }
+            set { days_exceeded = value; }
+        }
+
+        public Boolean Head_depHead_absent
+        {
+            get { return head_depHead_absent; }
+            set { head_depHead_absent = value; }
+        }
+
+        public Boolean department_Absent
+        {
+            get { return Department_absent; }
+            set { Department_absent = value; }
+        }
+
+        public Boolean SeniorStaff_absent
+        {
+            get { return seniorStaff_absent; }
+            set { seniorStaff_absent = value; }
+        }
+
+        public override string ToString()
+        {
+            return $"{Holiday_ID} - {Employee_ID} - {Holiday_start} - {Holiday_end} - {Holiday_status} - {Days_exceeded}";
+        }
+
     }
 }

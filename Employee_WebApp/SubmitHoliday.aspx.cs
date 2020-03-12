@@ -23,7 +23,7 @@ namespace Employee_WebApp
             try
             {
                 // Submit user holiday request on submit button click
-                client.submit_holiday_request(Session["CurrentUser"].ToString(), Convert.ToDateTime(TextBox_holidayStart.Text), Convert.ToDateTime(TextBox_holidayEnd.Text), false, false, false, false);
+                client.submit_holiday_request(Session["CurrentUser"].ToString(), Convert.ToDateTime(TextBox_holidayStart.Text), Convert.ToDateTime(TextBox_holidayEnd.Text), false, false, false, false, "Pending");
 
                 // Clear textboxes on successful submission
                 TextBox_holidayStart.Text = "";
@@ -37,6 +37,12 @@ namespace Employee_WebApp
                 Response.Write("<script> alert('Failed to submit holiday, please check the format of the dates you entered!'); </script>");
                 Console.WriteLine(es);
             }
+        }
+
+        protected void Button_viewHol_Click(object sender, EventArgs e)
+        {
+            // Direct to View holiday screen
+            Response.Redirect("ViewHolidays.aspx");
         }
     }
 }

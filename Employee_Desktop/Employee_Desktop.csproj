@@ -73,6 +73,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Connected Services\ServiceReference1\Employee_Desktop.ServiceReference1.get_outstanding_holiday_requests_for_employeeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Employee_Desktop.ServiceReference1.Holidays.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\Employee_Desktop.ServiceReference1.login_employeeResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
