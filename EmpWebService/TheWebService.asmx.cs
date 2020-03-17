@@ -141,7 +141,7 @@ namespace EmpWebService
         }
 
         //@desc Checks whether array of dates are between 23rd Dec - 3rd Jan (Constrains do not apply during this)
-        public bool check_if_dates_are_in_constraint_period(DateTime[] days_between_holiday, DateTime constraint_start_date, DateTime constraint_end_date)
+        public bool check_if_dates_are_in_certain_period(DateTime[] days_between_holiday, DateTime constraint_start_date, DateTime constraint_end_date)
         {
             // Get dates between constraint dates
             var days_between_constraints = get_days_between_dates(constraint_start_date, constraint_end_date);
@@ -174,10 +174,167 @@ namespace EmpWebService
             return false;
         }
 
-        [WebMethod] // @desc Constraint checking Algorithm.
-        public void apply_constraint_checking(string emp_email, DateTime holiday_start, DateTime holiday_end)
+        //@desc Returns all the head and deputy employees of a department
+        public List<Employees> get_head_and_deputy_of_department(string department)
         {
-            // CONSTRAINTS TO BE APPLIED, FALSE BY DEFAULT
+            var query = (from emp in db.Employees
+                         where emp.department == department 
+                         && emp.employee_role == "Head" 
+                         || emp.employee_role == "Deputy Head" 
+                         select emp);
+
+            // List to hold results
+            List<Employees> my_employees = new List<Employees>();
+
+            foreach (var emp in query)
+            {
+                // New Instance from Holidays class for each result
+                Employees user_employee = new Employees();
+                user_employee.ID_ = emp.Employee_ID;
+                user_employee.Name_ = emp.name_;
+                user_employee.Email = emp.email;
+                user_employee.Password = emp.password;
+                user_employee.System_role = emp.system_role;
+                user_employee.Join_date = (DateTime)emp.join_date;
+                user_employee.Department = emp.department;
+                user_employee.Employee_role = emp.employee_role;
+                user_employee.Holiday_days_available = (int)emp.holiday_days_available;
+
+                // Add each employee to list
+                my_employees.Add(user_employee);
+            }
+            return my_employees;
+        }
+
+        // @desc Returns manager and senior member from department
+        public List<Employees> get_seniors_of_department(string department)
+        {
+            var query = (from emp in db.Employees
+                         where emp.department == department
+                         && emp.employee_role == "Manager"
+                         || emp.employee_role == "Senior Member"
+                         select emp);
+
+            // List to hold results
+            List<Employees> my_employees = new List<Employees>();
+
+            foreach (var emp in query)
+            {
+                // New Instance from Holidays class for each result
+                Employees user_employee = new Employees();
+                user_employee.ID_ = emp.Employee_ID;
+                user_employee.Name_ = emp.name_;
+                user_employee.Email = emp.email;
+                user_employee.Password = emp.password;
+                user_employee.System_role = emp.system_role;
+                user_employee.Join_date = (DateTime)emp.join_date;
+                user_employee.Department = emp.department;
+                user_employee.Employee_role = emp.employee_role;
+                user_employee.Holiday_days_available = (int)emp.holiday_days_available;
+
+                // Add each employee to list
+                my_employees.Add(user_employee);
+            }
+            return my_employees;
+        }
+
+        // @desc Get all employees from department
+        public List<Employees> get_all_of_department(string department, int employee_that_submitted_holiday_ID)
+        {
+            var query = (from emp in db.Employees
+                         where emp.department == department
+                         && emp.Employee_ID != employee_that_submitted_holiday_ID
+                         select emp);
+
+            // List to hold results
+            List<Employees> my_employees = new List<Employees>();
+
+            foreach (var emp in query)
+            {
+                // New Instance from Holidays class for each result
+                Employees user_employee = new Employees();
+                user_employee.ID_ = emp.Employee_ID;
+                user_employee.Name_ = emp.name_;
+                user_employee.Email = emp.email;
+                user_employee.Password = emp.password;
+                user_employee.System_role = emp.system_role;
+                user_employee.Join_date = (DateTime)emp.join_date;
+                user_employee.Department = emp.department;
+                user_employee.Employee_role = emp.employee_role;
+                user_employee.Holiday_days_available = (int)emp.holiday_days_available;
+
+                // Add each employee to list
+                my_employees.Add(user_employee);
+            }
+            return my_employees;
+        }
+
+        // @desc Returns all holidays off a specific user
+        public List<Holidays> get_holidays(int employee_id)
+        {
+            var query = (from hol in db.Holidays
+                         where hol.Employee_ID == employee_id && hol.holiday_status == "Accepted"
+                         select hol);
+
+            List<Holidays> userHolidays = new List<Holidays>();
+
+            foreach (var holiday in query)
+            {
+                // New Instance from Holidays class for each result
+                Holidays my_holiday = new Holidays();
+
+                my_holiday.Employee_ID = (int)holiday.Employee_ID;
+                my_holiday.Holiday_ID = holiday.Holiday_ID;
+                my_holiday.Holiday_start = (DateTime)holiday.holiday_start;
+                my_holiday.Holiday_end = (DateTime)holiday.holiday_end;
+                my_holiday.Holiday_status = holiday.holiday_status;
+                my_holiday.Days_exceeded = (bool)holiday.days_exceeded;
+                my_holiday.department_Absent = (bool)holiday.Department_absent;
+                my_holiday.Head_depHead_absent = (bool)holiday.head_depHead_absent;
+                my_holiday.SeniorStaff_absent = (bool)holiday.seniorStaff_absent;
+
+                // Add each holiday object to list
+                userHolidays.Add(my_holiday);
+            }
+            return userHolidays;
+        }
+
+        //@desc Check whether employee has holiday or not
+        public bool does_employee_have_holiday_clash(int ID, DateTime empHolStart, DateTime empHolEnd)
+        { 
+            // Get current holidays for head/Deputy head
+            var current_holidays = get_holidays(ID); 
+
+            // Get days between user request holiday to check if dates clash with head or deputys head holidays
+            var days_between_holiday_request = get_days_between_dates(empHolStart, empHolEnd);
+
+            // Loop over holidays and check if theres a clash, if so return true.
+            foreach (var holiday in current_holidays)
+            {
+                // Get days between employee for head/ Deputy head
+                var days_holiday_for_head = get_days_between_dates(holiday.Holiday_start, holiday.Holiday_end);
+
+                // For each day in a holiday for the head, compare it to a day for the user requested holiday
+                foreach(var date in days_holiday_for_head)
+                {
+                    foreach(var requested_date in days_between_holiday_request)
+                    {
+                        // If any of the dates match then a head will not be in and therefore raises a constraint.
+                        if (date == requested_date)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+            }
+            return false;
+        }
+
+        [WebMethod] // @desc Constraint checking Algorithm.
+        public void submit_holiday_with_constraint_checking(string emp_email, DateTime holiday_start, DateTime holiday_end)
+        {
+            // CONSTRAINTS TO BE APPLIED, FALSE BY DEFAULT.
             bool days_exceeded = false;
             bool head_depHead_absent = false;
             bool seniorStaff_absent = false;
@@ -190,7 +347,7 @@ namespace EmpWebService
             var days_between_holiday_request = get_days_between_dates(holiday_start, holiday_end);
 
             // Check whether they're between 23rd Dec to 3rd Jan.
-            bool do_constraints_not_apply = check_if_dates_are_in_constraint_period(days_between_holiday_request, new DateTime(2020, 12, 23), new DateTime(2021, 01, 3)); 
+            bool do_constraints_not_apply = check_if_dates_are_in_certain_period(days_between_holiday_request, new DateTime(2020, 12, 23), new DateTime(2021, 01, 3)); 
 
             // If holiday is between Dec 23rd and 3rd Jan then it returns true as constraints should not apply and holiday should be submitted.
             if (do_constraints_not_apply == true)
@@ -205,7 +362,7 @@ namespace EmpWebService
                 }   
             }
 
-            // Apply further constraints by getting info for employee.
+            // Apply further constraints by getting info for EMPLOYEE.
             var current_employee = get_employee_byEmail(emp_email);
 
             // Verify whether or not employee qualifies for additional holiday days
@@ -224,22 +381,98 @@ namespace EmpWebService
                 }
             }
 
-            // GET IDs of head and depauty of department for the employees department
+            // GET employee info of head and deputy of department for the employees department
+            var head_and_deputy_employees = get_head_and_deputy_of_department(current_employee.Department);
 
-            
-        
+            // Loop over each and check if the employees clash with holiday dates
+            foreach (var employee in head_and_deputy_employees)
+            {
+                if (does_employee_have_holiday_clash(employee.ID_, holiday_start, holiday_end) == true ) {
+                    head_depHead_absent = true;
+                }
+            }
+
+            // GET Manager and Senior member that are on duty during holiday request
+            var senior_employees_of_department = get_seniors_of_department(current_employee.Department);
+
+            // Flags get triggered to true if atleast one senior member is present.
+            bool manager_present = false;
+            bool senior_member = false;
+
+            foreach (var employee in senior_employees_of_department)
+            {
+                // Check if atleast a manager is present
+                if (employee.Employee_role == "Manager")
+                {
+                    if (does_employee_have_holiday_clash(employee.ID_, holiday_start, holiday_end) == false) // If there are no clashes which means manager is present
+                    {
+                        manager_present = true;
+                    }
+                }
+
+                // Check if a senior member is present
+                if (employee.Employee_role == "Senior Member")
+                {
+                    if (does_employee_have_holiday_clash(employee.ID_, holiday_start, holiday_end) == false) // If there are no clashes which means senior member is present
+                    {
+                        senior_member = true;
+                    }
+                }
+            }
+
+            // If Manager and Senior Staff are not present during these periods.
+            if (manager_present != true && senior_member != true)
+            {
+                seniorStaff_absent = true;
+            }
+
+            // Get all employees from department
+            var employees_frm_department = get_all_of_department(current_employee.Department, current_employee.ID_);
+
+            // Store numbers of employees from department
+            int total_of_department = employees_frm_department.Count;
+            int total_emp_available = 0;
+
+            // For each employee check whether or not they are available during the employees submitted holiday.
+            foreach (var department_employee in employees_frm_department)
+            {
+                if(does_employee_have_holiday_clash(department_employee.ID_, holiday_start, holiday_end) == false) // IF an employee is available on during the dates then increment 
+                {
+                    total_emp_available += 1;
+                }
+            }
+
+            // Get percentage of employees available
+            var percentage_of_employees_available = total_emp_available / total_of_department * 100;
+
+            // Check if percentage of available department constraint should apply if holiday is in the month of August
+            foreach(var date in days_between_holiday_request)
+            {
+                if(date.Month == 8) // If holiday request is in month of August.
+                {
+                    if(percentage_of_employees_available >= 40) // Is the percentage of employees greater than 40%
+                    {
+                        // Submit holiday as other constraints do not apply.
+                        submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                    }
+                    else // Is the percentage of employees less than 40%
+                    {
+                        department_absent = true;
+                        submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                    }
+                } else // Not in August so reduced constraint for August does not apply.
+                {
+                    if (percentage_of_employees_available >= 60) // Is the percentage of employees greater than 40%
+                    {
+                        submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                    } else
+                    {
+                        department_absent = true;
+                        submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                    }
+                }
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 
     // Employee class to hold objects with its associated value
