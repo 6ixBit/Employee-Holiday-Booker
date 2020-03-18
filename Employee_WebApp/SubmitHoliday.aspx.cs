@@ -23,7 +23,7 @@ namespace Employee_WebApp
             try
             {
                 // Submit user holiday request on submit button click
-                client.submit_holiday_request(Session["CurrentUser"].ToString(), Convert.ToDateTime(TextBox_holidayStart.Text), Convert.ToDateTime(TextBox_holidayEnd.Text), false, false, false, false, "Pending");
+                client.submit_holiday_with_constraint_checking(Session["CurrentUser"].ToString(), Convert.ToDateTime(TextBox_holidayStart.Text), Convert.ToDateTime(TextBox_holidayEnd.Text));
 
                 // Clear textboxes on successful submission
                 TextBox_holidayStart.Text = "";

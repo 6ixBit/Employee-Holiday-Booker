@@ -67,6 +67,18 @@
           <s:element minOccurs="1" maxOccurs="1" name="SeniorStaff_absent" type="s:boolean" />
         </s:sequence>
       </s:complexType>
+      <s:element name="submit_holiday_with_constraint_checking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emp_email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="holiday_start" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="holiday_end" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submit_holiday_with_constraint_checkingResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="login_employeeSoapIn">
@@ -87,6 +99,12 @@
   <wsdl:message name="get_outstanding_holiday_requests_for_employeeSoapOut">
     <wsdl:part name="parameters" element="tns:get_outstanding_holiday_requests_for_employeeResponse" />
   </wsdl:message>
+  <wsdl:message name="submit_holiday_with_constraint_checkingSoapIn">
+    <wsdl:part name="parameters" element="tns:submit_holiday_with_constraint_checking" />
+  </wsdl:message>
+  <wsdl:message name="submit_holiday_with_constraint_checkingSoapOut">
+    <wsdl:part name="parameters" element="tns:submit_holiday_with_constraint_checkingResponse" />
+  </wsdl:message>
   <wsdl:portType name="TheWebServiceSoap">
     <wsdl:operation name="login_employee">
       <wsdl:input message="tns:login_employeeSoapIn" />
@@ -99,6 +117,10 @@
     <wsdl:operation name="get_outstanding_holiday_requests_for_employee">
       <wsdl:input message="tns:get_outstanding_holiday_requests_for_employeeSoapIn" />
       <wsdl:output message="tns:get_outstanding_holiday_requests_for_employeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="submit_holiday_with_constraint_checking">
+      <wsdl:input message="tns:submit_holiday_with_constraint_checkingSoapIn" />
+      <wsdl:output message="tns:submit_holiday_with_constraint_checkingSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TheWebServiceSoap" type="tns:TheWebServiceSoap">
@@ -130,6 +152,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="submit_holiday_with_constraint_checking">
+      <soap:operation soapAction="http://tempurideya.org/submit_holiday_with_constraint_checking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TheWebServiceSoap12" type="tns:TheWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -153,6 +184,15 @@
     </wsdl:operation>
     <wsdl:operation name="get_outstanding_holiday_requests_for_employee">
       <soap12:operation soapAction="http://tempurideya.org/get_outstanding_holiday_requests_for_employee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submit_holiday_with_constraint_checking">
+      <soap12:operation soapAction="http://tempurideya.org/submit_holiday_with_constraint_checking" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
