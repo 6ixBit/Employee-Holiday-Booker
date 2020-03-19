@@ -56,7 +56,7 @@ namespace Admin_desktopp
                     // Append results row by row
                     foreach (var emp in all_employees)
                     {
-                        Employee_dataGrid.Rows.Add(emp.Email, emp.Name_, emp.Employee_role, emp.Department, emp.System_role, emp.Join_date);
+                        Employee_dataGrid.Rows.Add(emp.Email, emp.Name_, emp.Employee_role, emp.Department, emp.System_role, emp.Join_date, emp.Holiday_days_available);
                     }
                 }
 
@@ -107,7 +107,7 @@ namespace Admin_desktopp
             // Append results row by row
             foreach (var hol in outstanding_holidays)
             {
-                Holiday_dataGrid.Rows.Add(hol.holiday_id, hol.Holiday_start, hol.Holiday_end, hol.Holiday_status, hol.Days_exceeded, hol.Head_depHead_absent, hol.SeniorStaff_absent, hol.department_Absent);
+                Holiday_dataGrid.Rows.Add(hol.holiday_id, hol.Holiday_start, hol.Holiday_end, hol.Holiday_status, hol.Days_exceeded ? "Yes" : "No", hol.Head_depHead_absent ? "Yes" : "No", hol.SeniorStaff_absent ? "Yes" : "No", hol.department_Absent ? "Yes" : "No");
             }
             // Hide any other panels and show clicked one
             main_Panel.Hide();
@@ -305,6 +305,29 @@ namespace Admin_desktopp
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+    }
+
+    public class Priority
+    {
+        private int holiday_id;
+        private double priority_score;
+
+        public int Holiday_id
+        {
+            get { return holiday_id; }
+            set { holiday_id = value; }
+        }
+
+        public double Priority_score
+        {
+            get { return priority_score; }
+            set { priority_score = value; }
+        }
+
+        public override string ToString()
+        {
+            return $"{Holiday_id} - {Priority_score}";
         }
     }
 }

@@ -698,7 +698,6 @@ namespace EmpWebService
         }
     }
 
-
     public class Holidays
     {
         private int employee_id;
