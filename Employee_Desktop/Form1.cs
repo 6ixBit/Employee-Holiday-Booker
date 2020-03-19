@@ -53,7 +53,7 @@ namespace Employee_Desktop
             try
             {
                 // Submit user holiday request on submit button click
-                client.submit_holiday_request(textBox_email.Text, Convert.ToDateTime(textBox_holStart.Text), Convert.ToDateTime(textBox_holEnd.Text), false, false, false, false, "Pending");
+                client.submit_holiday_with_constraint_checking(textBox_email.Text, Convert.ToDateTime(textBox_holStart.Text), Convert.ToDateTime(textBox_holEnd.Text));
                 
                 // Clear textboxes 
                 textBox_holStart.Text = "";

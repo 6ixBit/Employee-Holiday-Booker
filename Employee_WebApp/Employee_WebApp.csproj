@@ -119,6 +119,9 @@
     <Content Include="Connected Services\WebAppServiceReference\Employee_WebApp.WebAppServiceReference.Holidays.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\WebAppServiceReference\Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\WebAppServiceReference\TheWebService.disco" />
     <None Include="Connected Services\WebAppServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\WebAppServiceReference\configuration.svcinfo" />

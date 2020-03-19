@@ -217,6 +217,13 @@ namespace Employee_WebApp.WebAppServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempurideya.org/get_outstanding_holiday_requests_for_employee", ReplyAction="*")]
         System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.get_outstanding_holiday_requests_for_employeeResponse> get_outstanding_holiday_requests_for_employeeAsync(Employee_WebApp.WebAppServiceReference.get_outstanding_holiday_requests_for_employeeRequest request);
+        
+        // CODEGEN: Generating message contract since element name emp_email from namespace http://tempurideya.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempurideya.org/submit_holiday_with_constraint_checking", ReplyAction="*")]
+        Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse submit_holiday_with_constraint_checking(Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempurideya.org/submit_holiday_with_constraint_checking", ReplyAction="*")]
+        System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse> submit_holiday_with_constraint_checkingAsync(Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -448,6 +455,75 @@ namespace Employee_WebApp.WebAppServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class submit_holiday_with_constraint_checkingRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="submit_holiday_with_constraint_checking", Namespace="http://tempurideya.org/", Order=0)]
+        public Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequestBody Body;
+        
+        public submit_holiday_with_constraint_checkingRequest() {
+        }
+        
+        public submit_holiday_with_constraint_checkingRequest(Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempurideya.org/")]
+    public partial class submit_holiday_with_constraint_checkingRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string emp_email;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public System.DateTime holiday_start;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.DateTime holiday_end;
+        
+        public submit_holiday_with_constraint_checkingRequestBody() {
+        }
+        
+        public submit_holiday_with_constraint_checkingRequestBody(string emp_email, System.DateTime holiday_start, System.DateTime holiday_end) {
+            this.emp_email = emp_email;
+            this.holiday_start = holiday_start;
+            this.holiday_end = holiday_end;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class submit_holiday_with_constraint_checkingResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="submit_holiday_with_constraint_checkingResponse", Namespace="http://tempurideya.org/", Order=0)]
+        public Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponseBody Body;
+        
+        public submit_holiday_with_constraint_checkingResponse() {
+        }
+        
+        public submit_holiday_with_constraint_checkingResponse(Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class submit_holiday_with_constraint_checkingResponseBody {
+        
+        public submit_holiday_with_constraint_checkingResponseBody() {
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface TheWebServiceSoapChannel : Employee_WebApp.WebAppServiceReference.TheWebServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -563,6 +639,34 @@ namespace Employee_WebApp.WebAppServiceReference {
             inValue.Body = new Employee_WebApp.WebAppServiceReference.get_outstanding_holiday_requests_for_employeeRequestBody();
             inValue.Body.email = email;
             return ((Employee_WebApp.WebAppServiceReference.TheWebServiceSoap)(this)).get_outstanding_holiday_requests_for_employeeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse Employee_WebApp.WebAppServiceReference.TheWebServiceSoap.submit_holiday_with_constraint_checking(Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest request) {
+            return base.Channel.submit_holiday_with_constraint_checking(request);
+        }
+        
+        public void submit_holiday_with_constraint_checking(string emp_email, System.DateTime holiday_start, System.DateTime holiday_end) {
+            Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest inValue = new Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest();
+            inValue.Body = new Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequestBody();
+            inValue.Body.emp_email = emp_email;
+            inValue.Body.holiday_start = holiday_start;
+            inValue.Body.holiday_end = holiday_end;
+            Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse retVal = ((Employee_WebApp.WebAppServiceReference.TheWebServiceSoap)(this)).submit_holiday_with_constraint_checking(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse> Employee_WebApp.WebAppServiceReference.TheWebServiceSoap.submit_holiday_with_constraint_checkingAsync(Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest request) {
+            return base.Channel.submit_holiday_with_constraint_checkingAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse> submit_holiday_with_constraint_checkingAsync(string emp_email, System.DateTime holiday_start, System.DateTime holiday_end) {
+            Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest inValue = new Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest();
+            inValue.Body = new Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequestBody();
+            inValue.Body.emp_email = emp_email;
+            inValue.Body.holiday_start = holiday_start;
+            inValue.Body.holiday_end = holiday_end;
+            return ((Employee_WebApp.WebAppServiceReference.TheWebServiceSoap)(this)).submit_holiday_with_constraint_checkingAsync(inValue);
         }
     }
 }
