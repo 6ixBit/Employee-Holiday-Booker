@@ -140,7 +140,7 @@ namespace EmpWebService
             return actualAbsentDates;
         }
 
-        //@desc Checks whether array of dates are between 23rd Dec - 3rd Jan (Constrains do not apply during this)
+        //@desc Checks whether array of dates are between a certain period
         public bool check_if_dates_are_in_certain_period(DateTime[] days_between_holiday, DateTime constraint_start_date, DateTime constraint_end_date)
         {
             // Get dates between constraint dates
@@ -476,9 +476,127 @@ namespace EmpWebService
 
         // METHODS FOR PRIORITISATION ALGORITHM //
 
+        // @desc Returns all outstanding holiday requests for admin to see.
+        // On insert of holidays by employees set status to pending so that they 
+        // can be viewed by the admin as they're outstanding.
+        public List<Holidays> get_outstanding_holiday_requests()
+        {
+            // Query to select all elements that are pending
+            var query = (from hol in db.Holidays where hol.holiday_status == "Pending" select hol);
 
+            List<Holidays> userHolidays = new List<Holidays>();
 
+            foreach (var holiday in query)
+            {
+                // New Instance from Holidays class for each result
+                Holidays my_holiday = new Holidays();
 
+                my_holiday.Employee_ID = (int)holiday.Employee_ID;
+                my_holiday.Holiday_ID = holiday.Holiday_ID;
+                my_holiday.Holiday_start = (DateTime)holiday.holiday_start;
+                my_holiday.Holiday_end = (DateTime)holiday.holiday_end;
+                my_holiday.Holiday_status = holiday.holiday_status;
+                my_holiday.Days_exceeded = (bool)holiday.days_exceeded;
+                my_holiday.department_Absent = (bool)holiday.Department_absent;
+                my_holiday.Head_depHead_absent = (bool)holiday.head_depHead_absent;
+                my_holiday.SeniorStaff_absent = (bool)holiday.seniorStaff_absent;
+
+                // Add each holiday object to list
+                userHolidays.Add(my_holiday);
+            }
+            return userHolidays;
+        }
+
+        //Get sum of accepted holiday
+        public int get_sum_of_accepted_holiday(int employee_id)
+        {
+            // Query to select all elements that are pending based on employee ID
+            var query = (from hol in db.Holidays 
+                         where hol.Employee_ID == employee_id && 
+                         hol.holiday_status == "Accepted"
+                         select hol).ToList();
+
+            // Store sum of holidays that have been accepted.
+            int count_of_holidays = 0;
+
+            foreach (var holiday in query)
+            {
+                // Get year from Accepted holiday
+                var holidays_year = (DateTime)holiday.holiday_start;
+
+                // IF the accepted holidays are from this year increment counter
+                if(holidays_year.Year == DateTime.Today.Year)
+                {
+                    count_of_holidays += 1;
+                }
+            }
+
+            return count_of_holidays;
+        }
+
+        [WebMethod]
+        // @desc Prioritises requests based on a score system based on the numbers of days already 
+        public List<Holidays> prioritise_holiday_request()
+        {
+            // VARIABLES FOR CALCULATION
+            var no_of_peak_days_requested = 0;
+
+            // Get holidays that are currently pending.
+            var pending_holidays = get_outstanding_holiday_requests();
+
+            // Holds new holidays
+            var hols_with_priority_score = new List<Priority>();
+
+            // Using employee ID, get holidays of employee with status of accepted and date of holiday == current year then return a SUM 
+            foreach (var hol in pending_holidays)
+            {
+                var no_of_days_approved = get_sum_of_accepted_holiday(hol.Employee_ID);
+
+                // Fetch days between holiday dates
+                var days_between_holiday = get_days_between_dates(hol.Holiday_start, hol.Holiday_end);
+
+                // Set peak days
+                var peak_days_period_1 = new DateTime(2020, 07, 15); // 15th July
+                var peak_days_period_2 = new DateTime(2020, 08, 31); // 31st August
+
+                // Check whether or not this holiday is between a peak time period.
+                if (check_if_dates_are_in_certain_period(days_between_holiday, peak_days_period_1, peak_days_period_2) == true)
+                { // IF TRUE THEN ITS BETWEEN A PEAK TIME THEN INCREMENT NO_OF_PEAK_DAYS_REQUESTED BY 1
+                    no_of_peak_days_requested += 1;
+                }
+
+                // Calculate priority score, the close to 1.00 the higher the priority.
+                var priority_score = no_of_days_approved / 30 * 100 - no_of_peak_days_requested / 10;
+
+                // Add Holiday ID and priority score to new priority so it can be sorted.
+                Priority current_priority = new Priority();
+
+                current_priority.Priority_score = priority_score;
+                current_priority.Holiday_id = hol.Holiday_ID;
+                
+                hols_with_priority_score.Add(current_priority);
+
+            }
+
+            // Sort holidays based on list in ascending order with highest priority score appearing first (Closer to 1.00), the higher your priority.
+            var sortedByPriority = hols_with_priority_score.OrderBy(x => x.Priority_score);
+
+            List<Holidays> sorted_holidays = new List<Holidays>();
+
+            // Loop over priority and add holidays based on their priority score
+            foreach (var score in sortedByPriority)
+            {
+                foreach(var pending_hol in pending_holidays)
+                {   // If there is a match via their holiday_IDs then add it to final sorted list, higher priority scores will be at the top.
+                    if (score.Holiday_id == pending_hol.Holiday_ID)
+                    {
+                        sorted_holidays.Add(pending_hol);
+                    }
+                }
+                
+            }
+            return sorted_holidays;
+        }
 
     }
 
@@ -557,10 +675,34 @@ namespace EmpWebService
         }
     }
 
+    public class Priority
+    {
+        private int holiday_id;
+        private double priority_score;
+
+        public int Holiday_id
+        {
+            get { return holiday_id; }
+            set { holiday_id = value; }
+        }
+
+        public double Priority_score
+        {
+            get { return priority_score; }
+            set { priority_score = value; }
+        }
+
+        public override string ToString()
+        {
+            return $"{Holiday_id} - {Priority_score}";
+        }
+    }
+
+
     public class Holidays
     {
         private int employee_id;
-        public int holiday_id;
+        private int holiday_id;
         private DateTime holiday_start;
         private DateTime holiday_end;
         private String holiday_status;

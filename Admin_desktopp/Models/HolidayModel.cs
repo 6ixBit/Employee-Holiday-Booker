@@ -40,10 +40,6 @@ namespace Admin_desktopp.Models
                 // Add each holiday object to list
                 userHolidays.Add(my_holiday);
             }
-            foreach (var hold in userHolidays)
-            {
-                Console.WriteLine(hold);
-            }
             return userHolidays;
         }
 
