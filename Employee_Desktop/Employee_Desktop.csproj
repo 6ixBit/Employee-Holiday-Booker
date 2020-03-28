@@ -82,6 +82,9 @@
     <None Include="Connected Services\ServiceReference1\Employee_Desktop.ServiceReference1.login_employeeResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\Employee_Desktop.ServiceReference1.prioritise_holiday_requestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\Employee_Desktop.ServiceReference1.submit_holiday_requestResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

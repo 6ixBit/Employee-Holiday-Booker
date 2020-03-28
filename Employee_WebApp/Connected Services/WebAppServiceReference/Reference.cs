@@ -22,11 +22,9 @@ namespace Employee_WebApp.WebAppServiceReference {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private int holiday_idField;
-        
         private int Employee_IDField;
         
-        private int Holiday_ID1Field;
+        private int Holiday_IDField;
         
         private System.DateTime Holiday_startField;
         
@@ -54,19 +52,6 @@ namespace Employee_WebApp.WebAppServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int holiday_id {
-            get {
-                return this.holiday_idField;
-            }
-            set {
-                if ((this.holiday_idField.Equals(value) != true)) {
-                    this.holiday_idField = value;
-                    this.RaisePropertyChanged("holiday_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
         public int Employee_ID {
             get {
                 return this.Employee_IDField;
@@ -79,20 +64,20 @@ namespace Employee_WebApp.WebAppServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(Name="Holiday_ID", IsRequired=true, Order=2)]
-        public int Holiday_ID1 {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Holiday_ID {
             get {
-                return this.Holiday_ID1Field;
+                return this.Holiday_IDField;
             }
             set {
-                if ((this.Holiday_ID1Field.Equals(value) != true)) {
-                    this.Holiday_ID1Field = value;
-                    this.RaisePropertyChanged("Holiday_ID1");
+                if ((this.Holiday_IDField.Equals(value) != true)) {
+                    this.Holiday_IDField = value;
+                    this.RaisePropertyChanged("Holiday_ID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public System.DateTime Holiday_start {
             get {
                 return this.Holiday_startField;
@@ -105,7 +90,7 @@ namespace Employee_WebApp.WebAppServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
         public System.DateTime Holiday_end {
             get {
                 return this.Holiday_endField;
@@ -118,7 +103,7 @@ namespace Employee_WebApp.WebAppServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
         public string Holiday_status {
             get {
                 return this.Holiday_statusField;
@@ -131,7 +116,7 @@ namespace Employee_WebApp.WebAppServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
         public bool Days_exceeded {
             get {
                 return this.Days_exceededField;
@@ -144,7 +129,7 @@ namespace Employee_WebApp.WebAppServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
         public bool Head_depHead_absent {
             get {
                 return this.Head_depHead_absentField;
@@ -157,7 +142,7 @@ namespace Employee_WebApp.WebAppServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
         public bool department_Absent {
             get {
                 return this.department_AbsentField;
@@ -170,7 +155,7 @@ namespace Employee_WebApp.WebAppServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
         public bool SeniorStaff_absent {
             get {
                 return this.SeniorStaff_absentField;
@@ -224,6 +209,13 @@ namespace Employee_WebApp.WebAppServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempurideya.org/submit_holiday_with_constraint_checking", ReplyAction="*")]
         System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingResponse> submit_holiday_with_constraint_checkingAsync(Employee_WebApp.WebAppServiceReference.submit_holiday_with_constraint_checkingRequest request);
+        
+        // CODEGEN: Generating message contract since element name prioritise_holiday_requestResult from namespace http://tempurideya.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempurideya.org/prioritise_holiday_request", ReplyAction="*")]
+        Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponse prioritise_holiday_request(Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempurideya.org/prioritise_holiday_request", ReplyAction="*")]
+        System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponse> prioritise_holiday_requestAsync(Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -524,6 +516,67 @@ namespace Employee_WebApp.WebAppServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class prioritise_holiday_requestRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="prioritise_holiday_request", Namespace="http://tempurideya.org/", Order=0)]
+        public Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequestBody Body;
+        
+        public prioritise_holiday_requestRequest() {
+        }
+        
+        public prioritise_holiday_requestRequest(Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class prioritise_holiday_requestRequestBody {
+        
+        public prioritise_holiday_requestRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class prioritise_holiday_requestResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="prioritise_holiday_requestResponse", Namespace="http://tempurideya.org/", Order=0)]
+        public Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponseBody Body;
+        
+        public prioritise_holiday_requestResponse() {
+        }
+        
+        public prioritise_holiday_requestResponse(Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempurideya.org/")]
+    public partial class prioritise_holiday_requestResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Employee_WebApp.WebAppServiceReference.Holidays[] prioritise_holiday_requestResult;
+        
+        public prioritise_holiday_requestResponseBody() {
+        }
+        
+        public prioritise_holiday_requestResponseBody(Employee_WebApp.WebAppServiceReference.Holidays[] prioritise_holiday_requestResult) {
+            this.prioritise_holiday_requestResult = prioritise_holiday_requestResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface TheWebServiceSoapChannel : Employee_WebApp.WebAppServiceReference.TheWebServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -667,6 +720,29 @@ namespace Employee_WebApp.WebAppServiceReference {
             inValue.Body.holiday_start = holiday_start;
             inValue.Body.holiday_end = holiday_end;
             return ((Employee_WebApp.WebAppServiceReference.TheWebServiceSoap)(this)).submit_holiday_with_constraint_checkingAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponse Employee_WebApp.WebAppServiceReference.TheWebServiceSoap.prioritise_holiday_request(Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest request) {
+            return base.Channel.prioritise_holiday_request(request);
+        }
+        
+        public Employee_WebApp.WebAppServiceReference.Holidays[] prioritise_holiday_request() {
+            Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest inValue = new Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest();
+            inValue.Body = new Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequestBody();
+            Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponse retVal = ((Employee_WebApp.WebAppServiceReference.TheWebServiceSoap)(this)).prioritise_holiday_request(inValue);
+            return retVal.Body.prioritise_holiday_requestResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponse> Employee_WebApp.WebAppServiceReference.TheWebServiceSoap.prioritise_holiday_requestAsync(Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest request) {
+            return base.Channel.prioritise_holiday_requestAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestResponse> prioritise_holiday_requestAsync() {
+            Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest inValue = new Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequest();
+            inValue.Body = new Employee_WebApp.WebAppServiceReference.prioritise_holiday_requestRequestBody();
+            return ((Employee_WebApp.WebAppServiceReference.TheWebServiceSoap)(this)).prioritise_holiday_requestAsync(inValue);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Employee_WebApp
 
             // Get holidays for user using the session started on login.
             var holidays = client.get_outstanding_holiday_requests_for_employee(Session["CurrentUser"].ToString());
-
+  
             // Display data in table.
             foreach (var holiday in holidays)
             {
