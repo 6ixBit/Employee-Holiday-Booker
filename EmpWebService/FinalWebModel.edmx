@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="name_" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="employee_role" Type="varchar" MaxLength="50" />
+          <Property Name="department" Type="varchar" MaxLength="50" />
+          <Property Name="join_date" Type="date" />
+          <Property Name="system_role" Type="varchar" MaxLength="50" />
+          <Property Name="holiday_days_available" Type="int" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Holiday_ID" />
+          </Key>
+          <Property Name="Holiday_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_ID" Type="int" Nullable="false" />
+          <Property Name="holiday_start" Type="date" />
+          <Property Name="holiday_end" Type="date" />
+          <Property Name="holiday_status" Type="varchar" MaxLength="50" />
+          <Property Name="days_exceeded" Type="bit" />
+          <Property Name="head_depHead_absent" Type="bit" />
+          <Property Name="seniorStaff_absent" Type="bit" />
+          <Property Name="Department_absent" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="FinalModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="employee_role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="join_date" Type="DateTime" Precision="0" />
+          <Property Name="system_role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="holiday_days_available" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Holiday_ID" />
+          </Key>
+          <Property Name="Holiday_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+          <Property Name="holiday_start" Type="DateTime" Precision="0" />
+          <Property Name="holiday_end" Type="DateTime" Precision="0" />
+          <Property Name="holiday_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="days_exceeded" Type="Boolean" />
+          <Property Name="head_depHead_absent" Type="Boolean" />
+          <Property Name="seniorStaff_absent" Type="Boolean" />
+          <Property Name="Department_absent" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="FinalWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinalModelStoreContainer" CdmEntityContainer="FinalWebEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="FinalModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name_" ColumnName="name_" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="employee_role" ColumnName="employee_role" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="join_date" ColumnName="join_date" />
+                <ScalarProperty Name="system_role" ColumnName="system_role" />
+                <ScalarProperty Name="holiday_days_available" ColumnName="holiday_days_available" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="FinalModel.Holiday">
+              <MappingFragment StoreEntitySet="Holiday">
+                <ScalarProperty Name="Holiday_ID" ColumnName="Holiday_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="holiday_start" ColumnName="holiday_start" />
+                <ScalarProperty Name="holiday_end" ColumnName="holiday_end" />
+                <ScalarProperty Name="holiday_status" ColumnName="holiday_status" />
+                <ScalarProperty Name="days_exceeded" ColumnName="days_exceeded" />
+                <ScalarProperty Name="head_depHead_absent" ColumnName="head_depHead_absent" />
+                <ScalarProperty Name="seniorStaff_absent" ColumnName="seniorStaff_absent" />
+                <ScalarProperty Name="Department_absent" ColumnName="Department_absent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

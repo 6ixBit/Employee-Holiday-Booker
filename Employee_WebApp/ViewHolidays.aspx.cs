@@ -14,32 +14,38 @@ namespace Employee_WebApp
             // Initialise connection as client to SOAP service.
             Employee_WebApp.WebAppServiceReference.TheWebServiceSoapClient client = new WebAppServiceReference.TheWebServiceSoapClient();
 
-            // Get holidays for user using the session started on login.
-            var holidays = client.get_outstanding_holiday_requests_for_employee(Session["CurrentUser"].ToString());
-  
-            // Display data in table.
-            foreach (var holiday in holidays)
+            try
             {
-                //  Define a row to host the the data
-                TableRow row = new TableRow();
+                // Get holidays for user using the session started on login.
+                var holidays_avail = client.get_outstanding_holiday_requests_for_employee(Session["CurrentUser"].ToString());
 
-                // Cells for each column 
-                TableCell Firstcell = new TableCell();
-                TableCell SecondCell = new TableCell();
-                TableCell ThirdCell = new TableCell();
+                // Display data in table.
+                foreach (var holiday in holidays_avail)
+                {
+                    //  Define a row to host the the data
+                    TableRow row = new TableRow();
 
-                // Set text for each holiday
-                Firstcell.Text = $"{holiday.Holiday_start}";
-                SecondCell.Text = $"{holiday.Holiday_end}";
-                ThirdCell.Text = $"{holiday.Holiday_status}";
+                    // Cells for each column 
+                    TableCell Firstcell = new TableCell();
+                    TableCell SecondCell = new TableCell();
+                    TableCell ThirdCell = new TableCell();
 
-                // Add the populated cell to this row
-                row.Cells.Add(Firstcell);
-                row.Cells.Add(SecondCell);
-                row.Cells.Add(ThirdCell);
+                    // Set text for each holiday
+                    Firstcell.Text = $"{holiday.Holiday_start}";
+                    SecondCell.Text = $"{holiday.Holiday_end}";
+                    ThirdCell.Text = $"{holiday.Holiday_status}";
 
-                // Add modified row to table.
-                Table1.Rows.Add(row);
+                    // Add the populated cell to this row
+                    row.Cells.Add(Firstcell);
+                    row.Cells.Add(SecondCell);
+                    row.Cells.Add(ThirdCell);
+
+                    // Add modified row to table.
+                    Table1.Rows.Add(row);
+                }
+            } catch (Exception es)
+            {
+                Console.WriteLine(es);
             }
         }
 

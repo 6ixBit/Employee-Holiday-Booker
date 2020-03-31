@@ -9,8 +9,8 @@ namespace Admin_desktopp.Models
 {
     public class HolidayModel
     {
-        
-        readonly EmpHolidayEntities db = new EmpHolidayEntities();
+
+        readonly FinalEntities db = new FinalEntities();
 
         // @desc Returns all outstanding holiday requests for admin to see.
         // On insert of holidays by employees set status to pending so that they 

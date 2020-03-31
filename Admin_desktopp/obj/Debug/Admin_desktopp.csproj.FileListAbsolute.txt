@@ -14,8 +14,6 @@ C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\bin\Debug\Enti
 C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\obj\Debug\Admin_desktopp.csproj.CopyComplete
 C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\obj\Debug\Admin_desktopp.create_employee_form.resources
 C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\obj\Debug\Admin_desktopp.Edit_employee.resources
-C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\bin\Debug\EmpHoliday.mdf
-C:\Users\The Emperor\source\repos\6ixBit\COMP-1690\Admin_desktopp\bin\Debug\EmpHoliday_log.ldf
 C:\Users\mn7754c\Source\Repos\6ixBit\COMP-1690\Admin_desktopp\bin\Debug\EmpHoliday.mdf
 C:\Users\mn7754c\Source\Repos\6ixBit\COMP-1690\Admin_desktopp\bin\Debug\EmpHoliday_log.ldf
 C:\Users\mn7754c\Source\Repos\6ixBit\COMP-1690\Admin_desktopp\bin\Debug\Admin_desktopp.exe.config

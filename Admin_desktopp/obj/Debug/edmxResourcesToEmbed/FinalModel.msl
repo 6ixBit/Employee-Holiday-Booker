@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Holiday_bookingsModelStoreContainer" CdmEntityContainer="FinalEntities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="Holiday_bookingsModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name_" ColumnName="name_" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="employee_role" ColumnName="employee_role" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="join_date" ColumnName="join_date" />
+          <ScalarProperty Name="system_role" ColumnName="system_role" />
+          <ScalarProperty Name="holiday_days_available" ColumnName="holiday_days_available" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Holidays">
+      <EntityTypeMapping TypeName="Holiday_bookingsModel.Holiday">
+        <MappingFragment StoreEntitySet="Holiday">
+          <ScalarProperty Name="Holiday_ID" ColumnName="Holiday_ID" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="holiday_start" ColumnName="holiday_start" />
+          <ScalarProperty Name="holiday_end" ColumnName="holiday_end" />
+          <ScalarProperty Name="holiday_status" ColumnName="holiday_status" />
+          <ScalarProperty Name="days_exceeded" ColumnName="days_exceeded" />
+          <ScalarProperty Name="head_depHead_absent" ColumnName="head_depHead_absent" />
+          <ScalarProperty Name="seniorStaff_absent" ColumnName="seniorStaff_absent" />
+          <ScalarProperty Name="Department_absent" ColumnName="Department_absent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -17,7 +17,7 @@ namespace EmpWebService
     public class TheWebService : System.Web.Services.WebService
     {
         // Get DB instance
-        readonly EmpHolidayEntities db = new EmpHolidayEntities();
+        readonly FinalWebEntities db = new FinalWebEntities();
 
         [WebMethod]
         // @desc Returns user info if employee exists, else false
@@ -332,7 +332,7 @@ namespace EmpWebService
         }
 
         [WebMethod] // @desc Constraint checking Algorithm.
-        public void submit_holiday_with_constraint_checking(string emp_email, DateTime holiday_start, DateTime holiday_end)
+        public bool submit_holiday_with_constraint_checking(string emp_email, DateTime holiday_start, DateTime holiday_end)
         {
             // CONSTRAINTS TO BE APPLIED, FALSE BY DEFAULT.
             bool days_exceeded = false;
@@ -354,8 +354,8 @@ namespace EmpWebService
             { 
                 try
                 {   // Submit holiday with unmodified constraints.
-                    Console.WriteLine("No further constraints.");
                     submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                    return true;
                 } catch (Exception es)
                 {
                     Console.WriteLine(es);
@@ -454,24 +454,29 @@ namespace EmpWebService
                     {
                         // Submit holiday as other constraints do not apply.
                         submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                        return true;
                     }
                     else // Is the percentage of employees less than 40%
                     {
                         department_absent = true;
                         submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                        return true;
                     }
                 } else // Not in August so reduced constraint for August does not apply.
                 {
                     if (percentage_of_employees_available >= 60) // Is the percentage of employees greater than 40%
                     {
                         submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                        return true;
                     } else
                     {
                         department_absent = true;
                         submit_holiday_request(emp_email, holiday_start, holiday_end, days_exceeded, head_depHead_absent, seniorStaff_absent, department_absent);
+                        return true;
                     }
                 }
             }
+            return true;
         }
 
         // METHODS FOR PRIORITISATION ALGORITHM //

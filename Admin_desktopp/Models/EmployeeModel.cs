@@ -8,7 +8,7 @@ namespace Admin_desktopp.Models
 {
     public class EmployeeModel
     {
-        readonly EmpHolidayEntities db = new EmpHolidayEntities();
+        readonly FinalEntities db = new FinalEntities();
 
         // @desc Adds new employee to database
         public void add_employee(String name, String email, String password, String employee_role, String department, int holiday_days_available=30, String system_role="User")
