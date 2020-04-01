@@ -148,7 +148,8 @@ namespace Admin_desktopp.Models
             var query = (from emp in db.Employees
                          join hm in db.Holidays 
                          on emp.Employee_ID equals hm.Employee_ID
-                         where hm.holiday_start != date
+                         where hm.holiday_start != date && hm.holiday_status != "Accepted" && hm.holiday_end != date
+                         orderby emp.email ascending
                          select emp).Distinct(); 
 
             List<Employees> employees_on_holiday = new List<Employees>();
